@@ -5,4 +5,8 @@ return {
     {'Lukesmithxyz/vimling'},
     {'lervag/vimtex'},
     {'xuhdev/vim-latex-live-preview'},
+    {'renerocksai/telekasten.nvim',
+      dependencies = {'nvim-telescope/telescope.nvim'}
+    },
+    -- notetaking
 }
