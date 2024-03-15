@@ -101,20 +101,19 @@ wk.register({
         l = {"<cmd>:wq<cr>", ":wq (Write -> Leave)"},
     },
     z = {
+        {"<cmd>Telekasten panel<CR>", "Panel"},
         name = "Zettelkasten",
-        n = {"<Cmd>ZkNew {title = vim.fn.input('Title: ')}<CR>", "Create Zettel"},
-        o = {"<Cmd>ZkNotes {sort = {'modified'}}<CR>", "View Zettles"},
-        t = {"<Cmd>ZkTags<CR>", "Zettel Tags"},
-        f = {"<Cmd>ZkNotes {sort = {'modified'}, match = {vim.fn.input('Search: ')}}<CR>", "Search Zettels"}
+        f = {"<cmd>Telekasten find_notes<CR>", "Find notes"},
+        g = {"<cmd>Telekasten search_notes<CR>", "Search notes"},
+        d = {"<cmd>Telekasten goto_today<CR>", "Today!"},
+        z = {"<cmd>Telekasten follow_link<CR>", "Follow link"},
+        n = {"<cmd>Telekasten new_note<CR>", "New note"},
+        c = {"<cmd>Telekasten show_calendar<CR>", "Show calendar"},
+        b = {"<cmd>Telekasten show_backlinks<CR>", "Show backlinks"},
     },
 }, {prefix = "<leader>"})
 
--- Visual mode remaps
-wk.register({
-    z = {
-        f = {":'<,'>ZkMatch<CR>", "Search for notes matching selection"},
-    },
-}, {prefix = "<leader>", mode = "v"})
+k("i", "[[", "<cmd>Telekasten insert_link<CR>")
 
 -- # Native Neovim Remaps # --
 k("n", "<F12>", ":TZAtaraxis<CR>", {})
