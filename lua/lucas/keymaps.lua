@@ -43,7 +43,7 @@ wk.register({
         s = {builtin.find_files, "Find files"},
         g = {builtin.live_grep, "Live grep"},
         h = {builtin.help_tags, "Help tags"},
-        f = {"<cmd>e .<cr>", "Open NvimTree"},
+        v = {"<cmd>e .<cr>", "Open Netrw"},
     },
     l = {
         name = "LaTeX",
