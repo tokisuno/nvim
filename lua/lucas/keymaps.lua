@@ -57,12 +57,6 @@ wk.register({
         Q = {vim.cmd.bw, "Kill Buffer"},
         q = {vim.cmd.bd, "Unload Buffer"},
     },
-    r = {
-        name = "Leetcode",
-        r = {"<cmd>Leet lang<cr>", "Change language"},
-        t = {"<cmd>Leet test<cr>", "Test code"},
-        s = {"<cmd>Leet submit<cr>", "Submit answer"},
-    },
     g = {
         name = "TODO",
         i = {"<Plug>(simple-todo-new)", "New item"},
