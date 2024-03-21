@@ -8,6 +8,7 @@ return {
             "vim",
             "vimdoc",
             "python",
+            "rust"
         },
         sync_install = false,
         auto_install = true,
