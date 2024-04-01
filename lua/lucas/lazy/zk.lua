@@ -13,6 +13,7 @@ return {
         },
       },
     })
-  end
+  end,
+  ft = { "markdown" }
   },
 }

@@ -38,21 +38,16 @@ set.expandtab = true
 set.wrap = true
 set.linebreak = true
 set.clipboard = "unnamedplus"
+set.colorcolumn="80"
 
 -- filetype dependent tabbing
 vim.api.nvim_create_autocmd("Filetype", {
-  pattern = {"c", "cpp", "python"},
+  pattern = {"c", "cpp", "py"},
   callback = function ()
     vim.opt_local.shiftwidth = 4
     vim.opt_local.tabstop = 4
-    vim.opt_local.softtabstop = 2
-    vim.opt_local.shiftwidth = 2
   end
 })
-
--- folding --
-set.foldmethod = "syntax"
-vim.g.vimwiki_folding = 'expr:quick'
 
 -- search --
 vim.cmd('set nohlsearch')

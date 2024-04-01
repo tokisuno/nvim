@@ -28,7 +28,7 @@ return {
                 'clangd',
                 'vimls',
                 'marksman',
-                'rust-analyzer',
+                'rust_analyzer',
             },
             handlers = {
                 lsp.default_setup,

@@ -89,11 +89,6 @@ wk.register({
         },
         o = {":so ~/.config/nvim/init.lua<cr>", "Source config"},
     },
-    w = {
-        name = "Saving",
-        f = {"<cmd>:w<cr>", ":w (Write file)"},
-        l = {"<cmd>:wq<cr>", ":wq (Write -> Leave)"},
-    },
     z = {
         name = "Zettelkasten",
         n = {"<Cmd>ZkNew {title = vim.fn.input('Title: ')}<CR>", "Create Zettel"},
@@ -112,6 +107,9 @@ wk.register({
 
 -- # Native Neovim Remaps # --
 k("n", "<F12>", ":TZAtaraxis<CR>", {})
+
+-- Shortcuts --
+k("n", "<leader>i", "0f: | :put =strftime('%Y-%m-%d')<CR>")
 
 -- Movement binds
 k("v", "J", ":m '>+1<CR>gv=gv")
