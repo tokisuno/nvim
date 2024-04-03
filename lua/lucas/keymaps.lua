@@ -8,10 +8,10 @@ local opts = { noremap = true, silent = true }
 local builtin = require('telescope.builtin')
 require("true-zen.ataraxis")
 
+-- # Native Neovim Remaps # --
 -- Leader keys
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
-
 -- Buffer movement
 k('', '<up>', '<nop>')
 k('', '<down>', '<nop>')
@@ -23,6 +23,21 @@ k('n', '<C-k>', '<C-w>k')
 k('n', '<C-l>', '<C-w>l')
 k('n', '<leader>j', ':bprev<cr>')
 k('n', '<leader>k', ':bnext<cr>')
+k("n", "<F12>", ":TZAtaraxis<CR>", {})
+-- Movement binds
+k("v", "J", ":m '>+1<CR>gv=gv")
+k("v", "K", ":m '<-2<CR>gv=gv")
+k("n", "o", "o<esc>")
+k("n", "O", "O<esc>")
+k("n", "J", "mzJ`z")
+-- Visual/replacement binds
+k("n", "<C-d>", "<C-d>zz")
+k("n", "<C-u>", "<C-u>zz")
+k("n", "n", "nzzzv")
+k("n", "N", "Nzzzv")
+k("n", "<leader>d", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- Sets launch perms for file being written to
+k("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- # which-key.nvim # --
 wk.register({
@@ -105,30 +120,7 @@ wk.register({
     },
 }, {prefix = "<leader>", mode = "v"})
 
--- # Native Neovim Remaps # --
-k("n", "<F12>", ":TZAtaraxis<CR>", {})
-
--- Shortcuts --
-k("n", "<leader>i", "0f: | :put =strftime('%Y-%m-%d')<CR>")
-
--- Movement binds
-k("v", "J", ":m '>+1<CR>gv=gv")
-k("v", "K", ":m '<-2<CR>gv=gv")
-k("n", "o", "o<esc>")
-k("n", "O", "O<esc>")
-k("n", "J", "mzJ`z")
-
--- Visual/replacement binds
-k("n", "<C-d>", "<C-d>zz")
-k("n", "<C-u>", "<C-u>zz")
-k("n", "n", "nzzzv")
-k("n", "N", "Nzzzv")
-k("n", "<leader>d", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
--- Sets launch perms for file being written to
-k("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })
-
--- Bbitexcite keymaps
+-- Bibtexcite keymaps
 vim.cmd("autocmd FileType markdown  nnoremap <buffer> <silent> <leader>nc :BibtexciteInsert<CR>")
 vim.cmd("autocmd FileType markdown  inoremap <buffer> <silent> @@ <Esc>:BibtexciteInsert<CR>")
 
