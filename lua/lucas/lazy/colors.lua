@@ -1,12 +1,11 @@
 return {
-    {"Mofiqul/dracula.nvim",
-        config = function()
-            vim.cmd("colorscheme dracula")
-        end
-    },
-    -- {'rmehri01/onenord.nvim',
-    -- config = function()
-    --     vim.cmd("colorscheme onenord")
-    -- end
-    -- }
+  -- Lazy
+  {
+    "olimorris/onedarkpro.nvim",
+    priority = 1000,
+    config = function()
+      vim.cmd("colorscheme onedark")
+    end
+  },
+  {'norcalli/nvim-colorizer.lua'}
 }
