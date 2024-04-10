@@ -2,6 +2,7 @@ local set = vim.opt
 --# opts #--
 set.termguicolors = true
 set.guicursor = ""
+set.cursorline = true
 
 -- wildmenu --
 set.wildmenu = true
