@@ -1,12 +1,5 @@
 return {
     {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
-    {'windwp/nvim-autopairs',
-        event = "InsertEnter",
-        config = true,
-        opts = {
-            disable_filetype = { "TelescopePrompt", "vim" }
-        },
-    },
     {'neovim/nvim-lspconfig',
     config = function()
         local lsp = require('lsp-zero').preset("recommended")
@@ -36,12 +29,6 @@ return {
         })
         require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
         local cmp = require('cmp')
-        -- If you want insert `(` after select function or method item
-        local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-        cmp.event:on(
-          'confirm_done',
-          cmp_autopairs.on_confirm_done()
-        )
         local cmp_select = {behaviour = cmp.SelectBehavior.Select}
         local cmp_mappings = lsp.defaults.cmp_mappings({
             ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
