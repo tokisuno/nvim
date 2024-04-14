@@ -50,6 +50,11 @@ vim.api.nvim_create_autocmd("Filetype", {
   end
 })
 
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
+})
+
 -- search --
 vim.cmd('set nohlsearch')
 vim.cmd('set incsearch')
