@@ -17,10 +17,10 @@ k('', '<left>', '<nop>')
 k('', '<right>', '<nop>')
 
 -- Split Navigation
-k('n', '<C-h>', '<C-w>h')
-k('n', '<C-j>', '<C-w>j')
-k('n', '<C-k>', '<C-w>k')
-k('n', '<C-l>', '<C-w>l')
+-- k('n', '<C-h>', '<C-w>h')
+-- k('n', '<C-j>', '<C-w>j')
+-- k('n', '<C-k>', '<C-w>k')
+-- k('n', '<C-l>', '<C-w>l')
 
 -- Buffer movement
 k('n', '<leader>j', ':bprev<cr>')
@@ -131,7 +131,7 @@ wk.register({
 vim.cmd("autocmd FileType markdown  nnoremap <buffer> <silent> <leader>nc :BibtexciteInsert<CR>")
 vim.cmd("autocmd FileType markdown  inoremap <buffer> <silent> @@ <Esc>:BibtexciteInsert<CR>")
 
--- LuaSnips keymaps 
+-- LuaSnips keymaps
 k('n', '<Leader>L', '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})<CR>')
 vim.cmd("imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' ")
 vim.cmd("imap <silent><expr> <Tab> luasnip#expandable() ? '<Plug>luasnip-expand-snippet' : '<Tab>'")

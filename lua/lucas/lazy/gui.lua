@@ -1,6 +1,5 @@
 return {
   {'nvim-lua/plenary.nvim'},
-  {"nvim-telescope/telescope.nvim", version = '0.1.5'},
   {'nvim-tree/nvim-web-devicons'},
   {'lewis6991/gitsigns.nvim'},
   {'nvim-lualine/lualine.nvim'},
