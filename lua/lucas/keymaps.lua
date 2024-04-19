@@ -113,7 +113,6 @@ wk.register({
     },
     z = {
         name = "Zettelkasten",
-        n = {"<Cmd>ZkNew {title = vim.fn.input('Title: ')}<CR>", "Create Zettel"},
         o = {"<Cmd>ZkNotes {sort = {'modified'}}<CR>", "View Zettles"},
         t = {"<Cmd>ZkTags<CR>", "Zettel Tags"},
         f = {"<Cmd>ZkNotes {sort = {'modified'}, match = {vim.fn.input('Search: ')}}<CR>", "Search Zettels"}

@@ -21,6 +21,7 @@ return {
             "~/Dropbox/latex/bibs/clitics.bib",
             "~/Dropbox/latex/bibs/syntax.bib",
             "~/Dropbox/latex/bibs/philosophy.bib",
+            "~/Dropbox/latex/bibs/programming.bib",
           },
           citation_max_auth = 2,
           context = false,
