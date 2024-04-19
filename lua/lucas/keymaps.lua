@@ -6,7 +6,6 @@ local wk = require("which-key")
 local k = vim.keymap.set
 local opts = { noremap = true, silent = true }
 local builtin = require('telescope.builtin')
-require("true-zen.ataraxis")
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
@@ -16,15 +15,12 @@ k('', '<down>', '<nop>')
 k('', '<left>', '<nop>')
 k('', '<right>', '<nop>')
 
--- Split Navigation
--- k('n', '<C-h>', '<C-w>h')
--- k('n', '<C-j>', '<C-w>j')
--- k('n', '<C-k>', '<C-w>k')
--- k('n', '<C-l>', '<C-w>l')
-
 -- Buffer movement
 k('n', '<leader>j', ':bprev<cr>')
 k('n', '<leader>k', ':bnext<cr>')
+
+-- LuaSnips keymaps
+k('n', '<Leader>L', '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})<CR>')
 
 -- Movement binds
 k("v", "J", ":m '>+1<CR>gv=gv")
@@ -40,31 +36,25 @@ k("n", "n", "nzzzv")
 k("n", "N", "Nzzzv")
 k("n", "<leader>d", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- Focus/writing mode
-k("n", "<F12>", ":TZAtaraxis<CR>", {})
+-- Zettelkasten
+k("n", "<CR>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+k('n', '<bs>', ':edit #<cr>', { silent = true })
+k("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 
 -- Sets launch perms for file being written to
 k("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- # which-key.nvim # --
 wk.register({
-    c = {
-        name = "Cite...",
-        m = {":BibtexciteInsert p<CR>", "Pandoc Citation"},
-        l = {":BibtexciteInsert l<CR>", "Latex Citation"},
-        s = {
-            name = "Source...",
-            g = {":call BibGender()<cr>", "Gender"},
-            c = {":call BibClitics()<cr>", "Clitics"},
-            p = {":call BibPhilo()<cr>", "Philosophy"},
-        },
+    f = {
+      z = {":Telescope bibtex<CR>", "Find Zotero Citation", opts},
     },
     p = {
         name = "Files",
         b = {builtin.buffers, "View buffers"},
-        s = {builtin.find_files, "Find files"},
         g = {builtin.live_grep, "Live grep"},
         h = {builtin.help_tags, "Help tags"},
+        s = {builtin.find_files, "Find files"},
         v = {"<cmd>e .<cr>", "Open Netrw"},
     },
     l = {
@@ -76,66 +66,56 @@ wk.register({
     },
     q = {
         name = "Buffers",
-        Q = {vim.cmd.bw, "Kill Buffer"},
         q = {vim.cmd.bd, "Unload Buffer"},
-    },
-    g = {
-        name = "TODO",
-        i = {"<Plug>(simple-todo-new)", "New item"},
-        d = {"<Plug>(simple-todo-mark-as-done)", "Mark as done"},
-        u = {"<Plug>(simple-todo-mark-as-undone)", "Mark as undone"},
-        s = {"<Plug>(simple-todo-mark-switch)", "Switch status"},
     },
     t = {
         name = "Splits",
-        k = {"<C-w>t<C-w>K", "V to H"},
         h = {"<C-w>t<C-w>H", "H to V"},
+        k = {"<C-w>t<C-w>K", "V to H"},
         s = {":split<cr>", "Create split"},
         v = {":vs<cr>", "Create vertical split"}
     },
     s = {
         name = "Set...",
         f = {
-            name = "Filetype",
+            name = "filetype",
             b = {":set ft=bash<cr>", "Bash"},
             l = {":set ft=lua<cr>", "Lua"},
             p = {":set ft=python<cr>", "Python"},
             r = {":set ft=rust<cr>", "Rust"},
         },
-        u = {
-            name = "UI/UX",
-            a = {"<cmd>set nu relativenumber<cr>", "Relative numbers"},
-            f = {"<cmd>set norelativenumber<cr>", "Plain numbers"},
-            r = {":nnoremap j j| nnoremap k k| echo 'real line jumping'<cr>", "Real line jumping"},
-            v = {":nnoremap j gj| nnoremap k gk| echo 'visual line jumping'<cr>", "Visual line jumping"},
-        },
-        o = {":so ~/.config/nvim/init.lua<cr>", "Source config"},
+        o = {":so ~/.config/nvim/init.lua<cr>", "config"},
+    },
+    u = {
+        name = "UI/UX",
+        a = {"<cmd>set nu relativenumber<cr>", "Relative numbers"},
+        f = {"<cmd>set norelativenumber<cr>", "Plain numbers"},
+        r = {":nnoremap j j| nnoremap k k| echo 'real line jumping'<cr>", "Real line jumping"},
+        v = {":nnoremap j gj| nnoremap k gk| echo 'visual line jumping'<cr>", "Visual line jumping"},
     },
     z = {
         name = "Zettelkasten",
-        o = {"<Cmd>ZkNotes {sort = {'modified'}}<CR>", "View Zettles"},
-        t = {"<Cmd>ZkTags<CR>", "Zettel Tags"},
-        f = {"<Cmd>ZkNotes {sort = {'modified'}, match = {vim.fn.input('Search: ')}}<CR>", "Search Zettels"}
+        a = {":'<,'>lua vim.lsp.buf.range_code_action()<CR>", "Open the code actions for a visual selection", opts},
+        b = {"<Cmd>ZkBacklinks<CR>","Open notes linking to the current buffer", opts},
+        l = {"<Cmd>ZkBacklinks<CR>", "Open notes linking to the current buffer", opts},
+        s = {"<Cmd>ZkNotes {sort = {'modified'}, match = {vim.fn.input('Search: ')}}<CR>", "Search Zettels", opts},
+        t = {"<Cmd>ZkTags<CR>", "Open notes linked by the current buffer", opts},
     },
 }, {prefix = "<leader>"})
 
--- Visual mode remaps
 wk.register({
     z = {
+        name = "Zettelkasten",
+        c = {":'<,'>ZkNewFromContentSelection { dir = vim.fn.expand('%:p:h'), title = vim.fn.input('Title: ') }<CR>", "Create new Zettel from content selection", opts},
         f = {":'<,'>ZkMatch<CR>", "Search for notes matching selection"},
+        t = {":'<,'>ZkNewFromTitleSelection { dir = vim.fn.expand('%:p:h') }<CR>", "Create new Zettel from title selection", opts},
     },
 }, {prefix = "<leader>", mode = "v"})
 
--- Bibtexcite keymaps
-vim.cmd("autocmd FileType markdown  nnoremap <buffer> <silent> <leader>nc :BibtexciteInsert<CR>")
-vim.cmd("autocmd FileType markdown  inoremap <buffer> <silent> @@ <Esc>:BibtexciteInsert<CR>")
-
--- LuaSnips keymaps
-k('n', '<Leader>L', '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})<CR>')
 vim.cmd("imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' ")
 vim.cmd("imap <silent><expr> <Tab> luasnip#expandable() ? '<Plug>luasnip-expand-snippet' : '<Tab>'")
-vim.cmd("imap <silent><expr> <C-r> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<C-r>'")
-vim.cmd("smap <silent><expr> <C-r> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<C-r>'")
-vim.cmd("imap <silent><expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-e>'")
-vim.cmd("smap <silent><expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-e>'")
+vim.cmd("imap <silent><expr> <C-r> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<M-r>'")
+vim.cmd("smap <silent><expr> <C-r> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<M-r>'")
+vim.cmd("imap <silent><expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<M-e>'")
+vim.cmd("smap <silent><expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<M-e>'")
 

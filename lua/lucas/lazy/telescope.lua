@@ -2,11 +2,6 @@ return {
   {"nvim-telescope/telescope.nvim",
     dependencies = "nvim-telescope/telescope-bibtex.nvim",
     version = '0.1.5',
-    keys = {{
-      "<leader>fz",
-      ":Telescope bibtex<CR>",
-      desc = "Fuzzy [f]ind bibtex ([z]otero) references",
-    }},
     opts = {
       extensions = {
         bibtex = {
