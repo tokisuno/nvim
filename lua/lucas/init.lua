@@ -1,5 +1,5 @@
--- 2024-03-01
--- description: modular config
+-- 2024-04-20
+-- description: optimised for me :)
 
 require('lucas.lazy-config')
 require('lucas.set')

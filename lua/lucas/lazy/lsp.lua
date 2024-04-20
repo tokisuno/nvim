@@ -27,6 +27,20 @@ return {
                 lsp.default_setup,
             },
         })
+
+        local lspconfig = require('lspconfig')
+        local configs = require('lspconfig/configs')
+        configs.zk = {
+          default_config = {
+            cmd = {'zk', 'lsp'},
+            filetypes = {'markdown'},
+            root_dir = function()
+              return vim.loop.cwd()
+            end,
+            settings = {}
+          };
+        }
+
         require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
         local cmp = require('cmp')
         local cmp_select = {behaviour = cmp.SelectBehavior.Select}
