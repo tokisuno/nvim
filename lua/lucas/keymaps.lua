@@ -97,6 +97,7 @@ wk.register({
         name = "Zettelkasten",
         a = {":'<,'>lua vim.lsp.buf.range_code_action()<CR>", "Open the code actions for a visual selection", opts},
         b = {"<Cmd>ZkBacklinks<CR>","Open notes linking to the current buffer", opts},
+        i = {"<Cmd>ZkInsertLink<CR>","Create a new link", opts},
         l = {"<Cmd>ZkBacklinks<CR>", "Open notes linking to the current buffer", opts},
         s = {"<Cmd>ZkNotes {sort = {'modified'}, match = {vim.fn.input('Search: ')}}<CR>", "Search Zettels", opts},
         t = {"<Cmd>ZkTags<CR>", "Open notes linked by the current buffer", opts},

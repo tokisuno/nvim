@@ -1,12 +1,36 @@
 local ls = require("luasnip")
-local extras = require("luasnip.extras")
-local fmta = require("luasnip.extras.fmt").fmta
-
+local f = ls.function_node
+local t = ls.text_node
 local i = ls.insert_node
 local s = ls.snippet
+
+local extras = require("luasnip.extras")
+local fmt = require("luasnip.extras.fmt").fmt
+local fmta = require("luasnip.extras.fmt").fmta
 local p = extras.partial
 
+
 return {
+  s({trig=";tit"},
+    fmta(
+      [[
+        ---
+        title: <>
+        author: tokisuno
+        date: <>
+        ---
+      ]],
+    { i(1), p(os.date, '%Y-%m-%d') }
+    )
+  ),
+  s({trig=";dt"},
+    fmta(
+      [[
+      <>
+      ]],
+    { t(vim.fn.system([[date +"%Y-%m-%d" | tr -d '\n']])) }
+    )
+  ),
   s({trig=";go"},
     fmta(
       [[
@@ -49,21 +73,6 @@ return {
         ### <>
       ]],
     { i(1) }
-    )
-  ),
-  s({trig=";fm"},
-    fmta(
-      [[
-        ---
-        title: <>
-        author: <>
-        date: <>
-        ---
-      ]],
-    { i(1),
-      i(2, "Lucas"),
-      p(os.date, '%YYYY-%mm-%dd')
-    }
     )
   ),
 }

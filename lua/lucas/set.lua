@@ -1,4 +1,7 @@
 local set = vim.opt
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+
 --# opts #--
 set.termguicolors = true
 set.guicursor = ""
@@ -41,16 +44,23 @@ set.linebreak = true
 set.clipboard = "unnamedplus"
 set.colorcolumn="80"
 
--- filetype dependent tabbing
-vim.api.nvim_create_autocmd("Filetype", {
-  pattern = {"c", "cpp", "py", "go"},
-  callback = function ()
-    vim.opt_local.shiftwidth = 4
-    vim.opt_local.tabstop = 4
-  end
+-- disable colorcolumn on markdown and latex
+augroup('nocol', { clear = true })
+autocmd("Filetype", {
+  group = 'nocol',
+  pattern = {"markdown", "latex"},
+  command = "setlocal cc=0"
 })
 
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+-- filetype dependent tabbing
+augroup('fourtab', { clear = true })
+autocmd("Filetype", {
+  group = 'fourtab',
+  pattern = {"c", "cpp", "py", "go"},
+  command = "setlocal shiftwidth=4 tabstop=4"
+})
+
+autocmd({ "BufWritePre" }, {
   pattern = { "*" },
   command = [[%s/\s\+$//e]],
 })
@@ -73,18 +83,6 @@ set.showmatch = true
 -- misc --
 set.history = 100
 vim.cmd("set mouse=a")
-
--- vim-simple-todo
-vim.cmd("let g:simple_todo_map_keys = 0")
-
--- latex --
-vim.g['tex_flavor'] = 'latex'
-vim.g['vimtex_compiler_latexmk_engines'] = {['_'] = '-xelatex'}
-vim.g['vimtex_view_method'] = 'zathura'
-vim.g['vimtex_view_general_viewer'] = 'zathura'
-vim.g['vimtex_view_general_options'] = '--unique file:@pdf#src@line@tex'
-vim.g['vimtex_compiler_method'] = 'latexmk'
-vim.g['vimtex_view_automatic'] = 1
 
 -- netrw --
 -- @default = 20
