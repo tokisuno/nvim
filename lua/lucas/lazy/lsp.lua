@@ -22,6 +22,7 @@ return {
                 'vimls',
                 'marksman',
                 'rust_analyzer',
+                'typos_lsp',
             },
             handlers = {
                 lsp.default_setup,
