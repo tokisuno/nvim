@@ -37,8 +37,8 @@ k("n", "N", "Nzzzv")
 k("n", "<leader>d", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Zettelkasten
-k("n", "<CR>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-k('n', '<bs>', ':edit #<cr>', { silent = true })
+-- k("n", "<CR>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+-- k('n', '<bs>', ':edit #<cr>', { silent = true })
 k("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 
 -- Sets launch perms for file being written to
@@ -46,6 +46,10 @@ k("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- # which-key.nvim # --
 wk.register({
+    c = {
+      p = {":!g++ -std=c++17 -Wall -Wextra -Werror -O2 % && ./a.out<cr>", "Compile C++ (C++17)"},
+      c = {":!gcc -Wall -Wextra -std=c2x -pedantic % -o bins/%:r && ./bins/%:r<cr>", "Compile C (c2x)"},
+    },
     f = {
       z = {":Telescope bibtex<CR>", "Find Zotero Citation", opts},
     },

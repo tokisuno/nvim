@@ -56,8 +56,16 @@ autocmd("Filetype", {
 augroup('fourtab', { clear = true })
 autocmd("Filetype", {
   group = 'fourtab',
-  pattern = {"c", "cpp", "py", "go"},
+  pattern = {"c", "cpp", "cc", "py", "go"},
   command = "setlocal shiftwidth=4 tabstop=4"
+})
+
+
+augroup('colonindent', { clear = true })
+autocmd("Filetype", {
+  group = 'colonindent',
+  pattern = {"cpp", "cc", "rust"},
+  command = "setlocal indentkeys-=<:>"
 })
 
 autocmd({ "BufWritePre" }, {
