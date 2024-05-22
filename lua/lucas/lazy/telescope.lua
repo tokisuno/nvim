@@ -1,9 +1,19 @@
 return {
   {"nvim-telescope/telescope.nvim",
-    dependencies = "nvim-telescope/telescope-bibtex.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-bibtex.nvim",
+      "nvim-telescope/telescope-symbols.nvim",
+      'nvim-lua/plenary.nvim',
+    },
     version = '0.1.5',
     opts = {
       extensions = {
+        symbols = {
+          sources = {
+            'emoji',
+            'kaomoji',
+          },
+        },
         bibtex = {
           depth = 1,
           custom_formats = {
@@ -11,7 +21,7 @@ return {
               id = "zettel", cite_marker = "#%s"
             }
           },
-          format = 'zettel',
+          format = 'auto',
           global_files = {
             "~/Dropbox/latex/bibs/clitics.bib",
             "~/Dropbox/latex/bibs/syntax.bib",

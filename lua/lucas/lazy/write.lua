@@ -1,4 +1,5 @@
 return {
+    {'pocco81/true-zen.nvim'},
     {'Lukesmithxyz/vimling', ft = {"tex", "md"}},
     {'xuhdev/vim-latex-live-preview', ft = {"tex"}},
     {'lervag/vimtex',

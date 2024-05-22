@@ -21,6 +21,7 @@ set.signcolumn = "no"
 vim.cmd('syntax on')
 vim.cmd('syntax enable')
 vim.cmd('filetype plugin on')
+vim.cmd('filetype indent off')
 
 -- backups --
 set.swapfile = false
@@ -43,6 +44,7 @@ set.wrap = true
 set.linebreak = true
 set.clipboard = "unnamedplus"
 set.colorcolumn="80"
+set.ttimeoutlen=50
 
 -- disable colorcolumn on markdown and latex
 augroup('nocol', { clear = true })
@@ -73,6 +75,23 @@ autocmd({ "BufWritePre" }, {
   command = [[%s/\s\+$//e]],
 })
 
+augroup('set_wrap', { clear = true })
+autocmd('FileType', {
+  group = 'set_wrap',
+  pattern = {
+    'gitcommit',
+    'markdown',
+    'text',
+  },
+  callback = function()
+    local opts = { noremap = true, silent = true }
+    vim.opt_local.spell = true
+    vim.opt_local.wrap = true
+    vim.api.nvim_buf_set_keymap(0, 'n', 'j', 'gj', opts)
+    vim.api.nvim_buf_set_keymap(0, 'n', 'k', 'gk', opts)
+  end,
+})
+
 -- search --
 vim.cmd('set nohlsearch')
 vim.cmd('set incsearch')
@@ -91,6 +110,7 @@ set.showmatch = true
 -- misc --
 set.history = 100
 vim.cmd("set mouse=a")
+vim.cmd("set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20")
 
 -- netrw --
 -- @default = 20

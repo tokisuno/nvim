@@ -19,9 +19,6 @@ k('', '<right>', '<nop>')
 k('n', '<leader>j', ':bprev<cr>')
 k('n', '<leader>k', ':bnext<cr>')
 
--- LuaSnips keymaps
-k('n', '<Leader>L', '<Cmd>lua require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/LuaSnip/"})<CR>')
-
 -- Movement binds
 k("v", "J", ":m '>+1<CR>gv=gv")
 k("v", "K", ":m '<-2<CR>gv=gv")
@@ -34,11 +31,6 @@ k("n", "<C-d>", "<C-d>zz")
 k("n", "<C-u>", "<C-u>zz")
 k("n", "n", "nzzzv")
 k("n", "N", "Nzzzv")
-k("n", "<leader>d", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
--- Zettelkasten
--- k("n", "<CR>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
--- k('n', '<bs>', ':edit #<cr>', { silent = true })
 k("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 
 -- Sets launch perms for file being written to
@@ -47,11 +39,18 @@ k("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })
 -- # which-key.nvim # --
 wk.register({
     c = {
-      p = {":!g++ -std=c++17 -Wall -Wextra -Werror -O2 % && ./a.out<cr>", "Compile C++ (C++17)"},
-      c = {":!gcc -Wall -Wextra -std=c2x -pedantic % -o bins/%:r && ./bins/%:r<cr>", "Compile C (c2x)"},
+      name = "Compile",
+      g = {":!bash -c 'go run %'<cr>", "Go"},
+      p = {":!bash -c 'g++ -std=c++20 -Wall -Wextra -Werror -O2 % && ./a.out'<cr>", "C++ (C++20)"},
+      c = {":!bash -c 'gcc -Wall -Wextra -std=c2x -pedantic % -o bins/%:r && ./bins/%:r<cr>'", "C (c2x)"},
     },
+    d = {[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Find and replace", silent = false},
     f = {
       z = {":Telescope bibtex<CR>", "Find Zotero Citation", opts},
+    },
+    i = {
+      name = "Emoticons",
+      e = {"<space>:Telescope symbols", "Emoji picker"},
     },
     p = {
         name = "Files",
@@ -64,20 +63,18 @@ wk.register({
     l = {
         name = "LaTeX",
         c = {"<cmd>VimtexCountWords<cr>", "Count words (.tex)"},
-        d = {":call ToggleDeadKeys()<CR>", "Toggle Deadkeys"},
-        i = {":call ToggleIPA()<CR>", "Toggle IPA"},
-        t = {":call ToggleProse()<CR>", "Toggle Prose"},
     },
     q = {
         name = "Buffers",
         q = {vim.cmd.bd, "Unload Buffer"},
     },
     t = {
-        name = "Splits",
-        h = {"<C-w>t<C-w>H", "H to V"},
-        k = {"<C-w>t<C-w>K", "V to H"},
-        s = {":split<cr>", "Create split"},
-        v = {":vs<cr>", "Create vertical split"}
+        name = "Toggle",
+        d = {":call ToggleDeadKeys()<CR>", "Toggle Deadkeys"},
+        f = {":TZAtaraxis<CR>", "Toggle focus"},
+        i = {":call ToggleIPA()<CR>", "Toggle IPA"},
+        t = {":call ToggleProse()<CR>", "Toggle Prose"},
+        w = {":setlocal wrap!<CR>", "Toggle word-wrapping"},
     },
     s = {
         name = "Set...",
@@ -92,10 +89,13 @@ wk.register({
     },
     u = {
         name = "UI/UX",
-        a = {"<cmd>set nu relativenumber<cr>", "Relative numbers"},
-        f = {"<cmd>set norelativenumber<cr>", "Plain numbers"},
         r = {":nnoremap j j| nnoremap k k| echo 'real line jumping'<cr>", "Real line jumping"},
         v = {":nnoremap j gj| nnoremap k gk| echo 'visual line jumping'<cr>", "Visual line jumping"},
+    },
+    w = {
+      name = "Save..",
+      f = {":w<cr>", "file"},
+      l = {":wq<cr>", "and leave"},
     },
     z = {
         name = "Zettelkasten",
