@@ -14,4 +14,8 @@ return {
         vim.g['vimtex_view_automatic'] = 1
       end
     },
+    {"lukas-reineke/headlines.nvim",
+        dependencies = "nvim-treesitter/nvim-treesitter",
+        config = true, -- or `opts = {}`
+    },
 }

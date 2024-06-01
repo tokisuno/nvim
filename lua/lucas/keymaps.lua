@@ -33,16 +33,22 @@ k("n", "n", "nzzzv")
 k("n", "N", "Nzzzv")
 k("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 
+k("n", "<A-i>", '<cmd>lua require("FTerm").toggle()<cr>')
+k("t", "<A-i>", '<c-\\><c-n><cmd>lua require("FTerm").toggle()<cr>')
+
 -- Sets launch perms for file being written to
 k("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })
+
+k("i", "<C-h>", "<C-w>", { silent = true })
 
 -- # which-key.nvim # --
 wk.register({
     c = {
       name = "Compile",
-      g = {":!bash -c 'go run %'<cr>", "Go"},
-      p = {":!bash -c 'g++ -std=c++20 -Wall -Wextra -Werror -O2 % && ./a.out'<cr>", "C++ (C++20)"},
       c = {":!bash -c 'gcc -Wall -Wextra -std=c2x -pedantic % -o bins/%:r && ./bins/%:r<cr>'", "C (c2x)"},
+      g = {":!bash -c 'go run %'<cr>", "Go"},
+      o = {":!bash -c 'g++ -std=c++11 -O2 -Wall && ./a.out'<cr>", "Competitive C++"},
+      p = {":!bash -c 'g++ -std=c++23 -Wall -Wextra -Werror -O2 % && ./a.out'<cr>", "C++ (C++23)"},
     },
     d = {[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Find and replace", silent = false},
     f = {

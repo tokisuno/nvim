@@ -33,9 +33,9 @@ set.isfname:append("@-@")
 set.undofile = true
 
 -- formatting --
-set.tabstop = 2
-set.softtabstop = 2
-set.shiftwidth = 2
+set.tabstop = 4
+set.softtabstop = 4
+set.shiftwidth = 4
 set.expandtab = true
 set.updatetime = 50
 set.scrolloff = 6
@@ -46,22 +46,13 @@ set.clipboard = "unnamedplus"
 set.colorcolumn="80"
 set.ttimeoutlen=50
 
--- disable colorcolumn on markdown and latex
-augroup('nocol', { clear = true })
+-- settings for markdown/latex writing
+augroup('writing_settings', { clear = true })
 autocmd("Filetype", {
-  group = 'nocol',
+  group = 'writing_settings',
   pattern = {"markdown", "latex"},
-  command = "setlocal cc=0"
+  command = "setlocal cc=0 conceallevel=2"
 })
-
--- filetype dependent tabbing
-augroup('fourtab', { clear = true })
-autocmd("Filetype", {
-  group = 'fourtab',
-  pattern = {"c", "cpp", "cc", "py", "go"},
-  command = "setlocal shiftwidth=4 tabstop=4"
-})
-
 
 augroup('colonindent', { clear = true })
 autocmd("Filetype", {
