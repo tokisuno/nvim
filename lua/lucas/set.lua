@@ -8,7 +8,6 @@ set.guicursor = ""
 set.cursorline = true
 
 -- wildmenu --
-set.wildmenu = true
 set.wildmode = "list:longest"
 set.wildignore = {'*.docx','*.jpg','*.png','*.gif','*.pdf','*.pyc','*.exe','*.flv','*.img','*.xlsx'}
 
@@ -17,16 +16,9 @@ set.nu = true
 set.relativenumber = true
 set.signcolumn = "no"
 
--- syntax --
-vim.cmd('syntax on')
-vim.cmd('syntax enable')
-vim.cmd('filetype plugin on')
-vim.cmd('filetype indent off')
-
 -- backups --
 set.swapfile = false
-vim.o.backup = true
-vim.o.backupdir = os.getenv('HOME') .. '/.vim/backup'
+vim.o.backup = false
 set.undofile = true
 set.undodir=os.getenv("HOME") .. "/.vim/undodir"
 set.isfname:append("@-@")
@@ -42,7 +34,7 @@ set.scrolloff = 6
 set.expandtab = true
 set.wrap = true
 set.linebreak = true
-set.clipboard = "unnamedplus"
+-- set.clipboard = "unnamedplus"
 set.colorcolumn="80"
 set.ttimeoutlen=50
 
@@ -51,28 +43,15 @@ augroup('writing_settings', { clear = true })
 autocmd("Filetype", {
   group = 'writing_settings',
   pattern = {"markdown", "latex"},
-  command = "setlocal cc=0 conceallevel=2"
-})
-
-augroup('colonindent', { clear = true })
-autocmd("Filetype", {
-  group = 'colonindent',
-  pattern = {"cpp", "cc", "rust"},
-  command = "setlocal indentkeys-=<:>"
-})
-
-autocmd({ "BufWritePre" }, {
-  pattern = { "*" },
-  command = [[%s/\s\+$//e]],
+  command = "setlocal colorcolumn=0 conceallevel=2"
 })
 
 augroup('set_wrap', { clear = true })
 autocmd('FileType', {
   group = 'set_wrap',
   pattern = {
-    'gitcommit',
     'markdown',
-    'text',
+    'tex',
   },
   callback = function()
     local opts = { noremap = true, silent = true }
@@ -83,23 +62,16 @@ autocmd('FileType', {
   end,
 })
 
--- search --
-vim.cmd('set nohlsearch')
-vim.cmd('set incsearch')
-
 -- smart --
 set.smartcase = true
-set.smarttab = true
 set.smartindent = true
 set.breakindent = true
 
 -- show --
-set.showcmd = true
 set.showmode = true
 set.showmatch = true
 
 -- misc --
-set.history = 100
 vim.cmd("set mouse=a")
 vim.cmd("set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20")
 
@@ -114,4 +86,3 @@ vim.g.netrw_liststyle = 3 -- or 1
 vim.g.netrw_list_hide = vim.fn["netrw_gitignore#Hide"]()
 vim.g.netrw_preview = 1
 vim.g.netrw_browse_split = 0
-

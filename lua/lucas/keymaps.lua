@@ -39,6 +39,8 @@ k("t", "<A-i>", '<c-\\><c-n><cmd>lua require("FTerm").toggle()<cr>')
 -- Sets launch perms for file being written to
 k("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })
 
+
+
 k("i", "<C-h>", "<C-w>", { silent = true })
 
 -- # which-key.nvim # --
