@@ -12,9 +12,9 @@ return {
 
         int main(void)
         {
-          <>
+            <>
 
-          return 0;
+            return 0;
         }
       ]],
     { i(1), i(2) }

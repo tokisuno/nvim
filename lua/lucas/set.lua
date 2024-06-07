@@ -34,8 +34,8 @@ set.scrolloff = 6
 set.expandtab = true
 set.wrap = true
 set.linebreak = true
+set.colorcolumn="0"
 -- set.clipboard = "unnamedplus"
-set.colorcolumn="80"
 set.ttimeoutlen=50
 
 -- settings for markdown/latex writing
@@ -43,7 +43,7 @@ augroup('writing_settings', { clear = true })
 autocmd("Filetype", {
   group = 'writing_settings',
   pattern = {"markdown", "latex"},
-  command = "setlocal colorcolumn=0 conceallevel=2"
+  command = "setlocal conceallevel=2"
 })
 
 augroup('set_wrap', { clear = true })

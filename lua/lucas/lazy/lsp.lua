@@ -17,12 +17,12 @@ return {
                         ensure_installed = {
                             'gopls',
                             'lua_ls',
+                            'eslint',
                             'pyright',
                             'clangd',
                             'vimls',
                             'marksman',
                             'rust_analyzer',
-                            'typos_lsp',
                         },
                         handlers = {
                             lsp.default_setup,
@@ -39,22 +39,6 @@ return {
                             end,
                         settings = {}
                     };
-                }
-
-                require('lspconfig').clangd.setup {
-                    init_options = {
-                        fallbackFlags = {'--std=c++20'}
-                    },
-                    filetypes = { "h", "c", "cpp", "cc" },
-                    root_dir = lspconfig.util.root_pattern(
-                        '.clangd',
-                        '.clang-tidy',
-                        '.clang-format',
-                        'compile_commands.json',
-                        'compile_flags.txt',
-                        'configure.ac',
-                        '.git'
-                    )
                 }
                 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
                 local cmp = require('cmp')

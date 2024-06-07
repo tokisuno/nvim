@@ -47,10 +47,9 @@ k("i", "<C-h>", "<C-w>", { silent = true })
 wk.register({
     c = {
       name = "Compile",
-      c = {":!bash -c 'gcc -Wall -Wextra -std=c2x -pedantic % -o bins/%:r && ./bins/%:r<cr>'", "C (c2x)"},
+      c = {":!gcc -Wall -Wextra -std=c2x -pedantic % & ./a.out <cr>", "C (c2x)"},
       g = {":!bash -c 'go run %'<cr>", "Go"},
-      o = {":!bash -c 'g++ -std=c++11 -O2 -Wall && ./a.out'<cr>", "Competitive C++"},
-      p = {":!bash -c 'g++ -std=c++23 -Wall -Wextra -Werror -O2 % && ./a.out'<cr>", "C++ (C++23)"},
+      p = {":!bash -c 'g++ -std=c++23 -Wall -Wextra -Werror -O2 % '<cr>", "C++ (C++23)"},
     },
     d = {[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Find and replace", silent = false},
     f = {
