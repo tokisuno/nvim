@@ -12,17 +12,18 @@ return {
                 lsp.on_attach(function(client, bufnr)
                     lsp.default_keymaps({buffer = bufnr})
                     end)
+
                 require('mason').setup({})
                 require('mason-lspconfig').setup({
                         ensure_installed = {
                             'gopls',
                             'lua_ls',
-                            'eslint',
                             'pyright',
                             'clangd',
                             'vimls',
                             'marksman',
                             'rust_analyzer',
+                            'tsserver',
                         },
                         handlers = {
                             lsp.default_setup,
@@ -40,6 +41,11 @@ return {
                         settings = {}
                     };
                 }
+                require'lspconfig'.tsserver.setup{
+                  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+                  root_dir = function() return vim.loop.cwd() end
+                }
+
                 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
                 local cmp = require('cmp')
                 local cmp_select = {behaviour = cmp.SelectBehavior.Select}

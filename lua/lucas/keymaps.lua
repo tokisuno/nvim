@@ -33,8 +33,8 @@ k("n", "n", "nzzzv")
 k("n", "N", "Nzzzv")
 k("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 
-k("n", "<A-i>", '<cmd>lua require("FTerm").toggle()<cr>')
-k("t", "<A-i>", '<c-\\><c-n><cmd>lua require("FTerm").toggle()<cr>')
+-- k("n", "<A-i>", '<cmd>lua require("FTerm").toggle()<cr>')
+-- k("t", "<A-i>", '<c-\\><c-n><cmd>lua require("FTerm").toggle()<cr>')
 
 -- Sets launch perms for file being written to
 k("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })

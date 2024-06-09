@@ -38,14 +38,6 @@ set.colorcolumn="0"
 -- set.clipboard = "unnamedplus"
 set.ttimeoutlen=50
 
--- settings for markdown/latex writing
-augroup('writing_settings', { clear = true })
-autocmd("Filetype", {
-  group = 'writing_settings',
-  pattern = {"markdown", "latex"},
-  command = "setlocal conceallevel=2"
-})
-
 augroup('set_wrap', { clear = true })
 autocmd('FileType', {
   group = 'set_wrap',
@@ -73,16 +65,16 @@ set.showmatch = true
 
 -- misc --
 vim.cmd("set mouse=a")
-vim.cmd("set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20")
+-- vim.cmd("set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20")
 
 -- netrw --
--- @default = 20
-vim.g.netrw_winsize = 50
-vim.g.netrw_banner = 1
-vim.g.netrw_keepdir = 1
-vim.g.netrw_sort_sequence = [[[\/]$,*]]
-vim.g.netrw_sizestyle = "H"
-vim.g.netrw_liststyle = 3 -- or 1
-vim.g.netrw_list_hide = vim.fn["netrw_gitignore#Hide"]()
-vim.g.netrw_preview = 1
-vim.g.netrw_browse_split = 0
+-- -- @default = 20
+-- vim.g.netrw_winsize = 50
+-- vim.g.netrw_banner = 1
+-- vim.g.netrw_keepdir = 1
+-- vim.g.netrw_sort_sequence = [[[\/]$,*]]
+-- vim.g.netrw_sizestyle = "H"
+-- vim.g.netrw_liststyle = 3 -- or 1
+-- vim.g.netrw_list_hide = vim.fn["netrw_gitignore#Hide"]()
+-- vim.g.netrw_preview = 1
+-- vim.g.netrw_browse_split = 0
