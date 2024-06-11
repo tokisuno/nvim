@@ -26,16 +26,18 @@ set.undofile = true
 
 -- formatting --
 set.tabstop = 4
-set.softtabstop = 4
+set.softtabstop = 0
 set.shiftwidth = 4
 set.expandtab = true
 set.updatetime = 50
-set.scrolloff = 6
+set.scrolloff = 10
 set.expandtab = true
 set.wrap = true
 set.linebreak = true
 set.colorcolumn="0"
--- set.clipboard = "unnamedplus"
+set.smartcase = false
+set.smartindent = false
+set.breakindent = true
 set.ttimeoutlen=50
 
 augroup('set_wrap', { clear = true })
@@ -54,27 +56,10 @@ autocmd('FileType', {
   end,
 })
 
--- smart --
-set.smartcase = true
-set.smartindent = true
-set.breakindent = true
-
 -- show --
 set.showmode = true
 set.showmatch = true
 
 -- misc --
 vim.cmd("set mouse=a")
--- vim.cmd("set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20")
-
--- netrw --
--- -- @default = 20
--- vim.g.netrw_winsize = 50
--- vim.g.netrw_banner = 1
--- vim.g.netrw_keepdir = 1
--- vim.g.netrw_sort_sequence = [[[\/]$,*]]
--- vim.g.netrw_sizestyle = "H"
--- vim.g.netrw_liststyle = 3 -- or 1
--- vim.g.netrw_list_hide = vim.fn["netrw_gitignore#Hide"]()
--- vim.g.netrw_preview = 1
--- vim.g.netrw_browse_split = 0
+vim.cmd("set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20")

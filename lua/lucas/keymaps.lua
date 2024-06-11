@@ -92,6 +92,7 @@ wk.register({
             p = {":set ft=python<cr>", "Python"},
             r = {":set ft=rust<cr>", "Rust"},
         },
+        h = {":noh<cr>", "noh"},
         o = {":so ~/.config/nvim/init.lua<cr>", "config"},
     },
     u = {
