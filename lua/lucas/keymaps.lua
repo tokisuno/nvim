@@ -46,10 +46,8 @@ k("i", "<C-h>", "<C-w>", { silent = true })
 -- # which-key.nvim # --
 wk.register({
     c = {
-      name = "Compile",
-      c = {":!gcc -Wall -Wextra -std=c2x -pedantic % & ./a.out <cr>", "C (c2x)"},
-      g = {":!bash -c 'go run %'<cr>", "Go"},
-      p = {":!bash -c 'g++ -std=c++23 -Wall -Wextra -Werror -O2 % '<cr>", "C++ (C++23)"},
+        name = "Compile",
+        a = {":ColorizerAttachToBuffer<cr>", "Attach Colorizer to buffer", silent = false},
     },
     d = {[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Find and replace", silent = false},
     f = {

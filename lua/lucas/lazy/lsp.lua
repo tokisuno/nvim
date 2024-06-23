@@ -19,6 +19,7 @@ return {
                             'gopls',
                             'lua_ls',
                             'pyright',
+                            'emmet_ls',
                             'clangd',
                             'vimls',
                             'marksman',
@@ -41,6 +42,7 @@ return {
                         settings = {}
                     };
                 }
+                require('lspconfig').emmet_ls.setup {}
                 require'lspconfig'.tsserver.setup{
                   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
                   root_dir = function() return vim.loop.cwd() end
