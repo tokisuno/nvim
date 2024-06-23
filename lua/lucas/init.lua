@@ -1,4 +1,4 @@
--- 2024-04-20
+-- 2024-06-22
 -- description: optimised for me :)
 require('lucas.lazy-config')
 require('lucas.set')
