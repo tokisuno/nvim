@@ -78,7 +78,8 @@ wk.register({
         d = {":call ToggleDeadKeys()<CR>", "Toggle Deadkeys"},
         f = {":TZAtaraxis<CR>", "Toggle focus"},
         i = {":call ToggleIPA()<CR>", "Toggle IPA"},
-        t = {":call ToggleProse()<CR>", "Toggle Prose"},
+        t = {":Twilight<cr>", "Toggle twilight"},
+        p = {":call ToggleProse()<CR>", "Toggle Prose"},
         w = {":setlocal wrap!<CR>", "Toggle word-wrapping"},
     },
     s = {
