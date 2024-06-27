@@ -16,8 +16,12 @@ k('', '<left>', '<nop>')
 k('', '<right>', '<nop>')
 
 -- Buffer movement
-k('n', '<leader>j', ':bprev<cr>')
-k('n', '<leader>k', ':bnext<cr>')
+k('n', '<C-p>', ':bprev<cr>')
+k('n', '<C-n>', ':bnext<cr>')
+
+-- Resize windows
+k('n', '<M-l>', '5<C-w>>')
+k('n', '<M-h>', '5<C-w><')
 
 -- Movement binds
 k("v", "J", ":m '>+1<CR>gv=gv")
@@ -45,83 +49,83 @@ k("i", "<C-h>", "<C-w>", { silent = true })
 
 -- # which-key.nvim # --
 wk.register({
-    c = {
-        name = "Compile",
-        a = {":ColorizerAttachToBuffer<cr>", "Attach Colorizer to buffer", silent = false},
-    },
-    d = {[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Find and replace", silent = false},
+  c = {
+    name = "Compile",
+    a = {":ColorizerAttachToBuffer<cr>", "Attach Colorizer to buffer", silent = false},
+  },
+  d = {[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Find and replace", silent = false},
+  f = {
+    z = {":Telescope bibtex<CR>", "Find Zotero Citation", opts},
+  },
+  i = {
+    name = "Emoticons",
+    e = {"<space>:Telescope symbols", "Emoji picker"},
+  },
+  p = {
+    name = "Files",
+    b = {builtin.buffers, "View buffers"},
+    g = {builtin.live_grep, "Live grep"},
+    h = {builtin.help_tags, "Help tags"},
+    s = {builtin.find_files, "Find files"},
+    v = {"<cmd>e .<cr>", "Open Netrw"},
+  },
+  l = {
+    name = "LaTeX",
+    c = {"<cmd>VimtexCountWords<cr>", "Count words (.tex)"},
+  },
+  q = {
+    name = "Buffers",
+    q = {vim.cmd.bd, "Unload Buffer"},
+  },
+  t = {
+    name = "Toggle",
+    d = {":call ToggleDeadKeys()<CR>", "Toggle Deadkeys"},
+    f = {":TZAtaraxis<CR>", "Toggle focus"},
+    i = {":call ToggleIPA()<CR>", "Toggle IPA"},
+    t = {":Twilight<cr>", "Toggle twilight"},
+    p = {":call ToggleProse()<CR>", "Toggle Prose"},
+    w = {":setlocal wrap!<CR>", "Toggle word-wrapping"},
+  },
+  s = {
+    name = "Set...",
     f = {
-      z = {":Telescope bibtex<CR>", "Find Zotero Citation", opts},
+      name = "filetype",
+      b = {":set ft=bash<cr>", "Bash"},
+      l = {":set ft=lua<cr>", "Lua"},
+      p = {":set ft=python<cr>", "Python"},
+      r = {":set ft=rust<cr>", "Rust"},
     },
-    i = {
-      name = "Emoticons",
-      e = {"<space>:Telescope symbols", "Emoji picker"},
-    },
-    p = {
-        name = "Files",
-        b = {builtin.buffers, "View buffers"},
-        g = {builtin.live_grep, "Live grep"},
-        h = {builtin.help_tags, "Help tags"},
-        s = {builtin.find_files, "Find files"},
-        v = {"<cmd>e .<cr>", "Open Netrw"},
-    },
-    l = {
-        name = "LaTeX",
-        c = {"<cmd>VimtexCountWords<cr>", "Count words (.tex)"},
-    },
-    q = {
-        name = "Buffers",
-        q = {vim.cmd.bd, "Unload Buffer"},
-    },
-    t = {
-        name = "Toggle",
-        d = {":call ToggleDeadKeys()<CR>", "Toggle Deadkeys"},
-        f = {":TZAtaraxis<CR>", "Toggle focus"},
-        i = {":call ToggleIPA()<CR>", "Toggle IPA"},
-        t = {":Twilight<cr>", "Toggle twilight"},
-        p = {":call ToggleProse()<CR>", "Toggle Prose"},
-        w = {":setlocal wrap!<CR>", "Toggle word-wrapping"},
-    },
-    s = {
-        name = "Set...",
-        f = {
-            name = "filetype",
-            b = {":set ft=bash<cr>", "Bash"},
-            l = {":set ft=lua<cr>", "Lua"},
-            p = {":set ft=python<cr>", "Python"},
-            r = {":set ft=rust<cr>", "Rust"},
-        },
-        h = {":noh<cr>", "noh"},
-        o = {":so ~/.config/nvim/init.lua<cr>", "config"},
-    },
-    u = {
-        name = "UI/UX",
-        r = {":nnoremap j j| nnoremap k k| echo 'real line jumping'<cr>", "Real line jumping"},
-        v = {":nnoremap j gj| nnoremap k gk| echo 'visual line jumping'<cr>", "Visual line jumping"},
-    },
-    w = {
-      name = "Save..",
-      f = {":w<cr>", "file"},
-      l = {":wq<cr>", "and leave"},
-    },
-    z = {
-        name = "Zettelkasten",
-        a = {":'<,'>lua vim.lsp.buf.range_code_action()<CR>", "Open the code actions for a visual selection", opts},
-        b = {"<Cmd>ZkBacklinks<CR>","Open notes linking to the current buffer", opts},
-        i = {"<Cmd>ZkInsertLink<CR>","Create a new link", opts},
-        l = {"<Cmd>ZkBacklinks<CR>", "Open notes linking to the current buffer", opts},
-        s = {"<Cmd>ZkNotes {sort = {'modified'}, match = {vim.fn.input('Search: ')}}<CR>", "Search Zettels", opts},
-        t = {"<Cmd>ZkTags<CR>", "Open notes linked by the current buffer", opts},
-    },
+    h = {":noh<cr>", "noh"},
+    o = {":so ~/.config/nvim/init.lua<cr>", "config"},
+  },
+  u = {
+    name = "UI/UX",
+    r = {":nnoremap j j| nnoremap k k| echo 'real line jumping'<cr>", "Real line jumping"},
+    v = {":nnoremap j gj| nnoremap k gk| echo 'visual line jumping'<cr>", "Visual line jumping"},
+  },
+  w = {
+    name = "Save..",
+    f = {":w<cr>", "file"},
+    l = {":wq<cr>", "and leave"},
+  },
+  z = {
+    name = "Zettelkasten",
+    a = {":'<,'>lua vim.lsp.buf.range_code_action()<CR>", "Open the code actions for a visual selection", opts},
+    b = {"<Cmd>ZkBacklinks<CR>","Open notes linking to the current buffer", opts},
+    i = {"<Cmd>ZkInsertLink<CR>","Create a new link", opts},
+    l = {"<Cmd>ZkBacklinks<CR>", "Open notes linking to the current buffer", opts},
+    s = {"<Cmd>ZkNotes {sort = {'modified'}, match = {vim.fn.input('Search: ')}}<CR>", "Search Zettels", opts},
+    t = {"<Cmd>ZkTags<CR>", "Open notes linked by the current buffer", opts},
+  },
 }, {prefix = "<leader>"})
 
 wk.register({
-    z = {
-        name = "Zettelkasten",
-        c = {":'<,'>ZkNewFromContentSelection { dir = vim.fn.expand('%:p:h'), title = vim.fn.input('Title: ') }<CR>", "Create new Zettel from content selection", opts},
-        f = {":'<,'>ZkMatch<CR>", "Search for notes matching selection"},
-        t = {":'<,'>ZkNewFromTitleSelection { dir = vim.fn.expand('%:p:h') }<CR>", "Create new Zettel from title selection", opts},
-    },
+  z = {
+    name = "Zettelkasten",
+    c = {":'<,'>ZkNewFromContentSelection { dir = vim.fn.expand('%:p:h'), title = vim.fn.input('Title: ') }<CR>", "Create new Zettel from content selection", opts},
+    f = {":'<,'>ZkMatch<CR>", "Search for notes matching selection"},
+    t = {":'<,'>ZkNewFromTitleSelection { dir = vim.fn.expand('%:p:h') }<CR>", "Create new Zettel from title selection", opts},
+  },
 }, {prefix = "<leader>", mode = "v"})
 
 vim.cmd("imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' ")

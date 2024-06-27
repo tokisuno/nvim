@@ -40,12 +40,15 @@ set.smartindent = false
 set.breakindent = true
 set.ttimeoutlen=50
 
-augroup('html_css_tab', { clear = true })
+augroup('tabsize2', { clear = true })
 autocmd('FileType', {
-    group = 'html_css_tab',
+    group = 'tabsize2',
     pattern = {
         'html',
         'css',
+	'lua',
+	'luajit',
+	'rs',
     },
     callback = function()
         vim.cmd('setlocal tabstop=2 shiftwidth=2 softtabstop=0')
