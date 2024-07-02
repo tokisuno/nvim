@@ -43,15 +43,14 @@ k("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 -- Sets launch perms for file being written to
 k("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })
 
-
-
 k("i", "<C-h>", "<C-w>", { silent = true })
 
 -- # which-key.nvim # --
 wk.register({
   c = {
-    name = "Compile",
-    a = {":ColorizerAttachToBuffer<cr>", "Attach Colorizer to buffer", silent = false},
+    name = "Launch...",
+    f = {"!firefox %<cr>", "firefox on current buffer"},
+    n = {":!node %<CR>", "node on current buffer"},
   },
   d = {[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Find and replace", silent = false},
   f = {
@@ -88,6 +87,7 @@ wk.register({
   },
   s = {
     name = "Set...",
+    a = {":ColorizerAttachToBuffer<cr>", "Attach Colorizer to buffer", silent = false},
     f = {
       name = "filetype",
       b = {":set ft=bash<cr>", "Bash"},
@@ -127,11 +127,3 @@ wk.register({
     t = {":'<,'>ZkNewFromTitleSelection { dir = vim.fn.expand('%:p:h') }<CR>", "Create new Zettel from title selection", opts},
   },
 }, {prefix = "<leader>", mode = "v"})
-
-vim.cmd("imap <silent><expr> <Tab> luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>' ")
-vim.cmd("imap <silent><expr> <Tab> luasnip#expandable() ? '<Plug>luasnip-expand-snippet' : '<Tab>'")
-vim.cmd("imap <silent><expr> <C-r> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<M-r>'")
-vim.cmd("smap <silent><expr> <C-r> luasnip#jumpable(1) ? '<Plug>luasnip-jump-next' : '<M-r>'")
-vim.cmd("imap <silent><expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<M-e>'")
-vim.cmd("smap <silent><expr> <C-e> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<M-e>'")
-

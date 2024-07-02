@@ -1,5 +1,6 @@
 return {
   {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
+  {'L3MON4D3/LuaSnip'},
   {'neovim/nvim-lspconfig',
   config = function()
     local lsp = require('lsp-zero').preset("recommended")
@@ -30,6 +31,7 @@ return {
         lsp.default_setup,
       },
     })
+
     local lspconfig = require('lspconfig')
     local configs = require('lspconfig/configs')
     configs.zk = {

@@ -1,16 +1,7 @@
 return {
-    {"williamboman/mason.nvim",
-        opts = {
-            ensure_installed = {
-                "clangd",
-                "clangd-format",
-                "codelldb",
-            }
-        }
-    },
+    {"williamboman/mason.nvim"},
     {"williamboman/mason-lspconfig.nvim"},
     {'hrsh7th/cmp-nvim-lsp'},
     {'hrsh7th/nvim-cmp'},
     {'hrsh7th/cmp-path'},
-    {'hrsh7th/cmp-latex-symbols'},
 }
