@@ -22,12 +22,4 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
--- Profiles
--- require('config.lazy')
--- require('config.set')
--- require('config.binds')
--- require('config.autocmd')
---
--- require('plugins.ui')
-
 require("lucas")
