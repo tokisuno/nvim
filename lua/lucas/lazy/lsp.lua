@@ -1,6 +1,5 @@
 return {
   {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
-  {'L3MON4D3/LuaSnip'},
   {'neovim/nvim-lspconfig',
   config = function()
     local lsp = require('lsp-zero').preset("recommended")
@@ -33,32 +32,15 @@ return {
     })
 
     local lspconfig = require('lspconfig')
-    local configs = require('lspconfig/configs')
-    configs.zk = {
-      default_config = {
-        cmd = {'zk', 'lsp'},
-        filetypes = {'markdown'},
-        root_dir = function()
-          return vim.loop.cwd()
-        end,
-        settings = {}
-      };
-    }
-    lspconfig.emmet_ls.setup {}
+
+    lspconfig.emmet_ls.setup{}
     lspconfig.tsserver.setup{
       filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
       root_dir = function() return vim.loop.cwd() end
     }
 
     lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
-    local cmp = require('cmp')
-    local cmp_select = {behaviour = cmp.SelectBehavior.Select}
-    local cmp_mappings = lsp.defaults.cmp_mappings({
-      ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-      ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-      ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-      ['<C-Space>'] = cmp.mapping.complete(),
-    })
+
     lsp.set_preferences({
       suggest_lsp_servers = false,
       sign_icons = {
@@ -68,6 +50,7 @@ return {
         info = 'I'
       }
     })
+
     lsp.on_attach(function(client, bufnr)
       local opts = {buffer = bufnr, remap = false}
       vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -85,3 +68,4 @@ return {
   end
 }
 }
+

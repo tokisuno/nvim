@@ -24,11 +24,8 @@ k('n', '<M-l>', '5<C-w>>')
 k('n', '<M-h>', '5<C-w><')
 
 -- Movement binds
-k("v", "J", ":m '>+1<CR>gv=gv")
-k("v", "K", ":m '<-2<CR>gv=gv")
 k("n", "o", "o<esc>")
 k("n", "O", "O<esc>")
-k("n", "J", "mzJ`z")
 
 -- Quality of life
 k("n", "<C-d>", "<C-d>zz")
@@ -37,20 +34,17 @@ k("n", "n", "nzzzv")
 k("n", "N", "Nzzzv")
 k("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 
--- k("n", "<A-i>", '<cmd>lua require("FTerm").toggle()<cr>')
--- k("t", "<A-i>", '<c-\\><c-n><cmd>lua require("FTerm").toggle()<cr>')
-
 -- Sets launch perms for file being written to
 k("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })
 
+-- ctrl-backspace when in insert mode
 k("i", "<C-h>", "<C-w>", { silent = true })
 
 -- # which-key.nvim # --
 wk.register({
   c = {
-    name = "Launch...",
-    f = {"!firefox %<cr>", "firefox on current buffer"},
-    n = {":!node %<CR>", "node on current buffer"},
+    name = "Run with...",
+    n = {":!node %<CR>", "[n]ode on current buffer"},
   },
   d = {[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Find and replace", silent = false},
   f = {
@@ -86,44 +80,16 @@ wk.register({
     w = {":setlocal wrap!<CR>", "Toggle word-wrapping"},
   },
   s = {
-    name = "Set...",
-    a = {":ColorizerAttachToBuffer<cr>", "Attach Colorizer to buffer", silent = false},
-    f = {
+    name = "Set/Save",
+    c = {":ColorizerAttachToBuffer<cr>", "[s]et [c]olorizer", silent = false},
+    e = {":wq<cr>", "[s]ave and [e]xit", silent = false},
+    f = {":w<cr>", "[s]ave [f]ile", silent = false},
+    t = {
       name = "filetype",
       b = {":set ft=bash<cr>", "Bash"},
       l = {":set ft=lua<cr>", "Lua"},
       p = {":set ft=python<cr>", "Python"},
       r = {":set ft=rust<cr>", "Rust"},
     },
-    h = {":noh<cr>", "noh"},
-    o = {":so ~/.config/nvim/init.lua<cr>", "config"},
-  },
-  u = {
-    name = "UI/UX",
-    r = {":nnoremap j j| nnoremap k k| echo 'real line jumping'<cr>", "Real line jumping"},
-    v = {":nnoremap j gj| nnoremap k gk| echo 'visual line jumping'<cr>", "Visual line jumping"},
-  },
-  w = {
-    name = "Save..",
-    f = {":w<cr>", "file"},
-    l = {":wq<cr>", "and leave"},
-  },
-  z = {
-    name = "Zettelkasten",
-    a = {":'<,'>lua vim.lsp.buf.range_code_action()<CR>", "Open the code actions for a visual selection", opts},
-    b = {"<Cmd>ZkBacklinks<CR>","Open notes linking to the current buffer", opts},
-    i = {"<Cmd>ZkInsertLink<CR>","Create a new link", opts},
-    l = {"<Cmd>ZkBacklinks<CR>", "Open notes linking to the current buffer", opts},
-    s = {"<Cmd>ZkNotes {sort = {'modified'}, match = {vim.fn.input('Search: ')}}<CR>", "Search Zettels", opts},
-    t = {"<Cmd>ZkTags<CR>", "Open notes linked by the current buffer", opts},
   },
 }, {prefix = "<leader>"})
-
-wk.register({
-  z = {
-    name = "Zettelkasten",
-    c = {":'<,'>ZkNewFromContentSelection { dir = vim.fn.expand('%:p:h'), title = vim.fn.input('Title: ') }<CR>", "Create new Zettel from content selection", opts},
-    f = {":'<,'>ZkMatch<CR>", "Search for notes matching selection"},
-    t = {":'<,'>ZkNewFromTitleSelection { dir = vim.fn.expand('%:p:h') }<CR>", "Create new Zettel from title selection", opts},
-  },
-}, {prefix = "<leader>", mode = "v"})

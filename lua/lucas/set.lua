@@ -26,17 +26,17 @@ set.undofile = true
 
 -- formatting --
 set.tabstop = 4
-set.softtabstop = 0
 set.shiftwidth = 4
+set.softtabstop = 4
+set.smartindent = false
 set.expandtab = true
+
 set.updatetime = 50
 set.scrolloff = 10
-set.expandtab = true
 set.wrap = true
 set.linebreak = true
 set.colorcolumn="0"
 set.smartcase = false
-set.smartindent = false
 set.breakindent = true
 set.ttimeoutlen=50
 
@@ -46,12 +46,12 @@ autocmd('FileType', {
     pattern = {
         'html',
         'css',
-	'lua',
-	'luajit',
-	'rs',
+        'lua',
+        'luajit',
+        'rs',
     },
     callback = function()
-        vim.cmd('setlocal tabstop=2 shiftwidth=2 softtabstop=0')
+        vim.cmd('setlocal tabstop=2 shiftwidth=2 softtabstop=2')
     end,
 })
 
