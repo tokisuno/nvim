@@ -33,6 +33,7 @@ k("n", "<C-u>", "<C-u>zz")
 k("n", "n", "nzzzv")
 k("n", "N", "Nzzzv")
 k("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+k("n", "<leader><CR", ":noh<CR>")
 
 -- Sets launch perms for file being written to
 k("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })
@@ -82,7 +83,7 @@ wk.register({
   s = {
     name = "Set/Save",
     c = {":ColorizerAttachToBuffer<cr>", "[s]et [c]olorizer", silent = false},
-    e = {":wq<cr>", "[s]ave and [e]xit", silent = false},
+    l = {":wq<cr>", "[s]ave and [l]eave", silent = false},
     f = {":w<cr>", "[s]ave [f]ile", silent = false},
     t = {
       name = "filetype",
