@@ -33,7 +33,8 @@ k("n", "<C-u>", "<C-u>zz")
 k("n", "n", "nzzzv")
 k("n", "N", "Nzzzv")
 k("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-k("n", "<leader><CR", ":noh<CR>")
+k("n", "<leader><CR>", ":noh<CR>")
+k("n", "<leader>Q", ":q!<Cr>")
 
 -- Sets launch perms for file being written to
 k("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })
@@ -66,6 +67,7 @@ wk.register({
   l = {
     name = "LaTeX",
     c = {"<cmd>VimtexCountWords<cr>", "Count words (.tex)"},
+    l = {":Lazy<cr>", "Open Lazy"},
   },
   q = {
     name = "Buffers",
@@ -78,6 +80,7 @@ wk.register({
     i = {":call ToggleIPA()<CR>", "Toggle IPA"},
     t = {":Twilight<cr>", "Toggle twilight"},
     p = {":call ToggleProse()<CR>", "Toggle Prose"},
+    s = {":LiveServerToggle<CR>", "Toggle live-server"},
     w = {":setlocal wrap!<CR>", "Toggle word-wrapping"},
   },
   s = {
