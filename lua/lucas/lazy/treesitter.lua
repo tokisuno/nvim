@@ -1,22 +1,32 @@
 return {
   {'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require'nvim-treesitter.configs'.setup {
-        ensure_installed = {
-            "c",
-            "lua",
-            "vim",
-            "vimdoc",
-            "python",
-            "rust"
-        },
-        sync_install = false,
-        auto_install = true,
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        },
-      }
-    end
+  config = function()
+    require('nvim-treesitter.configs').setup {
+      ensure_installed = {
+        "c",
+        "cpp",
+        "css",
+        "gitignore",
+        "html",
+        "javascript",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "rust",
+        "toml",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "yaml",
+      },
+      sync_install = false,
+      auto_install = true,
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
+    }
+  end
   }
 }

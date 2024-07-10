@@ -2,7 +2,6 @@
 require('lucas.lazy-config')
 require('lucas.set')
 require('lucas.keymaps')
-require('lucas.funcs')
 
 -- mini.nvim modules
 require('mini.align').setup()

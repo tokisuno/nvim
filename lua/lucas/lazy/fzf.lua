@@ -1,8 +1,8 @@
 return {
-    {"ibhagwan/fzf-lua",
-        config = function()
-            -- calling `setup` is optional for customization
-            require("fzf-lua").setup({})
-        end
-    },
+  {"ibhagwan/fzf-lua",
+  config = function()
+    -- calling `setup` is optional for customization
+    require("fzf-lua").setup({})
+  end
+  },
 }
