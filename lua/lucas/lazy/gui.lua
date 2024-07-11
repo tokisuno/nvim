@@ -9,4 +9,5 @@ return {
   end,
   },
   {"folke/twilight.nvim"},
+  {"j-hui/fidget.nvim"},
 }
