@@ -6,8 +6,6 @@ require('lucas.keymaps')
 -- mini.nvim modules
 require('mini.align').setup()
 require('mini.comment').setup()
-require('mini.cursorword').setup()
-require('mini.fuzzy').setup()
 require('mini.git').setup()
 require('mini.hipatterns').setup()
 require('mini.icons').setup()
