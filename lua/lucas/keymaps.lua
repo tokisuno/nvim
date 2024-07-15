@@ -21,8 +21,8 @@ k('n', '<C-p>', ':bprev<cr>')
 k('n', '<C-n>', ':bnext<cr>')
 
 -- Resize windows
-k('n', '<M-l>', '5<C-w>>')
-k('n', '<M-h>', '5<C-w><')
+k('n', '<M-z>', '5<C-w>>')
+k('n', '<M-x>', '5<C-w><')
 
 -- Quality of life
 k("n", "<C-d>", "<C-d>zz")

@@ -34,6 +34,11 @@ return {
     local lspconfig = require('lspconfig')
 
     lspconfig.emmet_ls.setup{}
+    lspconfig.clangd.setup {
+      init_options = {
+        fallbackFlags = {'-std=c++23', '-std=c23'}
+      },
+    }
     lspconfig.tsserver.setup{
       filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
       root_dir = function() return vim.loop.cwd() end
