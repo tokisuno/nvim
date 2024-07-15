@@ -1,7 +1,6 @@
 -- tokisuno keybindings
 -- 2024-03-01
 -- description: adding which-key support
-
 local wk = require("which-key")
 local k = vim.keymap.set
 local ls = require("luasnip")
@@ -21,8 +20,8 @@ k('n', '<C-p>', ':bprev<cr>')
 k('n', '<C-n>', ':bnext<cr>')
 
 -- Resize windows
-k('n', '<M-z>', '5<C-w>>')
-k('n', '<M-x>', '5<C-w><')
+k('n', '<M-9>', '5<C-w>>')
+k('n', '<M-0>', '5<C-w><')
 
 -- Quality of life
 k("n", "<C-d>", "<C-d>zz")
@@ -57,60 +56,32 @@ end, {silent = true})
 
 
 -- # which-key.nvim # --
-wk.register({
-  c = {
-    name = "Run with...",
-    n = {":!node %<CR>",                 "[n]ode on current buffer"},
-  },
-  f = {
-    z = {":Telescope bibtex<CR>",        "Find Zotero Citation", opts},
-  },
-  i = {
-    name = "Emoticons",
-    e = {"<space>:Telescope symbols",    "Emoji picker"},
-  },
-  p = {
-    name = "Files",
-    b = {builtin.buffers,                "View buffers"},
-    g = {builtin.live_grep,              "Live grep"},
-    h = {builtin.help_tags,              "Help tags"},
-    s = {builtin.find_files,             "Find files"},
-    v = {"<cmd>e .<cr>",                 "Open Netrw"},
-  },
-  l = {
-    name = "LaTeX",
-    c = {"<cmd>VimtexCountWords<cr>",    "Count words (.tex)"},
-    l = {":Lazy<cr>",                    "Open Lazy"},
-  },
-  q = {
-    name = "Buffers",
-    e = {":q<cr>",                       "Quits out of window"},
-    q = {vim.cmd.bd,                     "Unload Buffer"},
-  },
-  w = {
-    name = ":w with whatever",
-    f = {":w<cr>",                       "[s]ave [f]ile",        silent = false},
-    q = {":wq<cr>",                      "[s]ave and [l]eave",   silent = false},
-  },
-  t = {
-    name = "Toggle",
-    d = {":call ToggleDeadKeys()<CR>",   "Toggle Deadkeys"},
-    f = {":TZAtaraxis<CR>",              "Toggle focus"},
-    i = {":call ToggleIPA()<CR>",        "Toggle IPA"},
-    t = {":Twilight<cr>",                "Toggle twilight"},
-    p = {":call ToggleProse()<CR>",      "Toggle Prose"},
-    s = {":LiveServerToggle<CR>",        "Toggle live-server"},
-    w = {":setlocal wrap!<CR>",          "Toggle word-wrapping"},
-  },
-  s = {
-    name = "Set/Save",
-    c = {":ColorizerAttachToBuffer<cr>", "[s]et [c]olorizer",    silent = false},
-    t = {
-      name = "filetype",
-      b = {":set ft=bash<cr>",           "Bash"},
-      l = {":set ft=lua<cr>",            "Lua"},
-      p = {":set ft=python<cr>",         "Python"},
-      r = {":set ft=rust<cr>",           "Rust"},
-    },
-  },
-},                                       {prefix = "<leader>"})
+wk.add({
+  {"<leader>c", group="compile"},
+  {"<leader>cn", ":!node %<cr>", desc="Node.js"},
+
+  -- Finding/managing files
+  {"<leader>p", group="Files"},
+  {"<leader>pg", builtin.live_grep, desc="Live grep"},
+  {"<leader>ph", builtin.help_tags, desc="Help tags"},
+  {"<leader>ps", builtin.find_files, desc="Find files"},
+  {"<leader>pv", ":e .<cr>", desc="Open file picker"},
+
+  -- Opening lazy.nvim menu
+  {"<leader>ll", ":Lazy<cr>", desc="Open Lazy"},
+
+  -- Buffer management
+  {"<leader>qe", ":q<cr>", desc="Quits out of window"},
+  {"<leader>qq", vim.cmd.bd, desc="Unload buffer"},
+  {"<leader>w", group=":w"},
+  {"<leader>wf", ":w<cr>", desc="Save"},
+  {"<leader>wq", ":wq<cr>", desc="Save and quit"},
+
+  -- Toggles
+  {"<leader>t", group="Toggles"},
+  {"<leader>td", ":call ToggleDeadKeys()<cr>", desc="Deadkeys"},
+  {"<leader>tf", ":TZAtaraxis<cr>", desc="Focus"},
+  {"<leader>ti", ":call ToggleIPA()<cr>", desc="IPA"},
+  {"<leader>ts", ":LiveServerToggle<cr>", desc="LiveServerToggle"},
+  {"<leader>tw", ":setlocal wrap!<cr>", desc="Word wrapping"},
+})
