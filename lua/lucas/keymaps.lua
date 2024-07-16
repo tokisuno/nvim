@@ -29,8 +29,6 @@ k("n", "<C-u>", "<C-u>zz")
 k("n", "n", "nzzzv")
 k("n", "N", "Nzzzv")
 k("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-k("n", "<leader><CR>", ":noh<CR>")
-k("n", "<leader>Q", ":q!<Cr>")
 k("n", "<C-s>", "S")
 k({"n", "v", "s"}, "<C-q>", "=")
 k({"n", "v", "s"}, "<M-m>", "%")
@@ -71,8 +69,12 @@ wk.add({
   {"<leader>ll", ":Lazy<cr>", desc="Open Lazy"},
 
   -- Buffer management
+  {"<leader>q", group="Quit"},
+  {"<leader>Q", ":q!<Cr>", desc=":q!"},
   {"<leader>qe", ":q<cr>", desc="Quits out of window"},
   {"<leader>qq", vim.cmd.bd, desc="Unload buffer"},
+
+  {"<leader>w", group="Write"},
   {"<leader>w", group=":w"},
   {"<leader>wf", ":w<cr>", desc="Save"},
   {"<leader>wq", ":wq<cr>", desc="Save and quit"},

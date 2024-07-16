@@ -8,13 +8,11 @@ return {
     opts = {
       {
         plugins = {
-          marks = true, -- shows a list of your marks on ' and `
-          registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-          -- the presets plugin, adds help for a bunch of default keybindings in Neovim
-          -- No actual key bindings are created
+          marks = false,
+          registers = false,
           spelling = {
-            enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
-            suggestions = 20, -- how many suggestions should be shown in the list?
+            enabled = true,
+            suggestions = 10,
           },
           presets = {
             operators = true, -- adds help for operators like d, y, ...
@@ -26,16 +24,12 @@ return {
             g = true, -- bindings for prefixed with g
           },
         },
-        -- add operators that will trigger motion and text object completion
-        -- to enable all native operators, set the preset / operators plugin above
         operators = { gc = "Comments" },
         motions = {
           count = true,
         },
         icons = {
-          breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-          separator = "➜", -- symbol used between a key and it's label
-          group = "+", -- symbol prepended to a group
+          rules = false,
         },
         popup_mappings = {
           scroll_down = "<c-d>", -- binding to scroll down inside the popup
