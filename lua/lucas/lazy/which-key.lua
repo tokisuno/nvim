@@ -29,6 +29,7 @@ return {
           count = true,
         },
         icons = {
+          mappings = false,
           rules = false,
         },
         popup_mappings = {
