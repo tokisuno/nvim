@@ -4,7 +4,6 @@ return {
   {'nvim-lua/plenary.nvim'},
 	{"numToStr/Comment.nvim"},
 	{"kylechui/nvim-surround"},
-	{"nvimdev/indentmini.nvim"},
   {"ggandor/leap.nvim",
     config = function(_, opts)
       local leap = require("leap")
@@ -24,19 +23,6 @@ return {
     config = function()
       require('hlsearch').setup()
     end,
-  },
-  {"shellRaining/hlchunk.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require("hlchunk").setup({
-        chunk = {
-          enable = true
-        },
-        line_num = {
-          enable = true
-        },
-      })
-    end
   },
   {"ibhagwan/fzf-lua", config = function()
 			require("fzf-lua").setup({})

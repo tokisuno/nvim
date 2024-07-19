@@ -32,9 +32,11 @@ k("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 k("n", "<C-s>", "S")
 k({"n", "v", "s"}, "<C-q>", "=")
 k({"n", "v", "s"}, "<M-m>", "%")
-k("n", "<leader>d", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 k("n", "o", "o<esc>")
 k("n", "O", "O<esc>")
+
+k("n", "<leader>dd", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+k("n", "<leader>dt", ":pu=strftime('%c')<cr>")
 
 -- Sets launch perms for file being written to
 k("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })
@@ -68,12 +70,12 @@ wk.add({
   -- Opening lazy.nvim menu
   {"<leader>ll", ":Lazy<cr>", desc="Open Lazy"},
 
-  -- Buffer management
+  -- Quit
   {"<leader>q", group="Quit"},
   {"<leader>Q", ":q!<Cr>", desc=":q!"},
   {"<leader>qe", ":q<cr>", desc="Quits out of window"},
   {"<leader>qq", vim.cmd.bd, desc="Unload buffer"},
-
+  -- Write
   {"<leader>w", group="Write"},
   {"<leader>w", group=":w"},
   {"<leader>wf", ":w<cr>", desc="Save"},
