@@ -1,12 +1,15 @@
--- tokisuno keybindings
+-- tokisuno keybindiq
 -- 2024-03-01
 -- description: adding which-key support
-local wk = require("which-key")
-local k = vim.keymap.set
-local ls = require("luasnip")
+local k    = vim.keymap.set
+local wk   = require("which-key")
+local ls   = require("luasnip")
 local opts = { noremap = true, silent = true }
+
 local builtin = require('telescope.builtin')
-vim.g.mapleader = " "
+local themes  = require('telescope.themes')
+
+vim.g.mapleader      = " "
 vim.g.maplocalleader = ","
 
 -- Byebye arrow keys
@@ -62,10 +65,10 @@ wk.add({
 
   -- Finding/managing files
   {"<leader>p", group="Files"},
-  {"<leader>pg", builtin.live_grep, desc="Live grep"},
-  {"<leader>ph", builtin.help_tags, desc="Help tags"},
-  {"<leader>ps", builtin.find_files, desc="Find files"},
-  {"<leader>pv", ":e .<cr>", desc="Open file picker"},
+  {"<leader>pg", function() builtin.live_grep(themes.get_dropdown({})) end, desc="Live grep"},
+  {"<leader>ph", function() builtin.help_tags(themes.get_dropdown({})) end, desc="Help tags"},
+  {"<leader>ps", function() builtin.find_files(themes.get_dropdown({})) end, desc="Find files"},
+  {"<leader>pv", ":e .<cr>", desc="le picker"},
 
   -- Opening lazy.nvim menu
   {"<leader>ll", ":Lazy<cr>", desc="Open Lazy"},
@@ -83,9 +86,7 @@ wk.add({
 
   -- Toggles
   {"<leader>t", group="Toggles"},
-  {"<leader>td", ":call ToggleDeadKeys()<cr>", desc="Deadkeys"},
   {"<leader>tf", ":TZAtaraxis<cr>", desc="Focus"},
-  {"<leader>ti", ":call ToggleIPA()<cr>", desc="IPA"},
   {"<leader>ts", ":LiveServerToggle<cr>", desc="LiveServerToggle"},
   {"<leader>tw", ":setlocal wrap!<cr>", desc="Word wrapping"},
 })
