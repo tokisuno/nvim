@@ -1,6 +1,3 @@
--- tokisuno keybindiq
--- 2024-03-01
--- description: adding which-key support
 local k    = vim.keymap.set
 local wk   = require("which-key")
 local ls   = require("luasnip")
@@ -8,6 +5,7 @@ local opts = { noremap = true, silent = true }
 
 local builtin = require('telescope.builtin')
 local themes  = require('telescope.themes')
+local harpoon = require('harpoon')
 
 vim.g.mapleader      = " "
 vim.g.maplocalleader = ","
@@ -58,35 +56,58 @@ k({"i", "s"}, "<C-l>", function()
 end, {silent = true})
 
 
+-- harpoon2: electric boogaloo
+k("n", "<leader>a", function() harpoon:list():add() end)
+k("n", "<leader>e", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+k("n", "<leader>h", function() harpoon:list():select(1) end)
+k("n", "<leader>j", function() harpoon:list():select(2) end)
+k("n", "<leader>k", function() harpoon:list():select(3) end)
+k("n", "<leader>l", function() harpoon:list():select(4) end)
+
+harpoon:extend({
+  UI_CREATE = function(cx)
+    vim.keymap.set("n", "<C-v>", function()
+      harpoon.ui:select_menu_item({ vsplit = true })
+    end, { buffer = cx.bufnr })
+
+    vim.keymap.set("n", "<C-x>", function()
+      harpoon.ui:select_menu_item({ split = true })
+    end, { buffer = cx.bufnr })
+  end,
+})
+
+
 -- # which-key.nvim # --
 wk.add({
   {"<leader>c", group="compile"},
   {"<leader>cn", ":!node %<cr>", desc="Node.js"},
 
   -- Finding/managing files
-  {"<leader>p", group="Files"},
-  {"<leader>pg", function() builtin.live_grep(themes.get_dropdown({})) end, desc="Live grep"},
-  {"<leader>ph", function() builtin.help_tags(themes.get_dropdown({})) end, desc="Help tags"},
-  {"<leader>ps", function() builtin.find_files(themes.get_dropdown({})) end, desc="Find files"},
-  {"<leader>pv", ":e .<cr>", desc="le picker"},
+  {"<leader>f", group="Files"},
+  {"<leader>fg", function() builtin.live_grep(themes.get_dropdown({})) end, desc="Live grep"},
+  {"<leader>fh", function() builtin.help_tags(themes.get_dropdown({})) end, desc="Help tags"},
+  {"<leader>ff", function() builtin.find_files(themes.get_dropdown({})) end, desc="Find files"},
+  {"<leader>fb", function() builtin.buffers(themes.get_dropdown({})) end, desc="Open buffers"},
+
+  -- Legacy keymap (opens oil)
+  {"<leader><leader>", ":e .<cr>", desc="Explorador de archivos"},
 
   -- Opening lazy.nvim menu
-  {"<leader>ll", ":Lazy<cr>", desc="Open Lazy"},
+  {"<leader>o", ":Lazy<cr>", desc="Open Lazy"},
 
   -- Quit
   {"<leader>q", group="Quit"},
   {"<leader>Q", ":q!<Cr>", desc=":q!"},
   {"<leader>qe", ":q<cr>", desc="Quits out of window"},
   {"<leader>qq", vim.cmd.bd, desc="Unload buffer"},
+
   -- Write
   {"<leader>w", group="Write"},
-  {"<leader>w", group=":w"},
   {"<leader>wf", ":w<cr>", desc="Save"},
   {"<leader>wq", ":wq<cr>", desc="Save and quit"},
 
   -- Toggles
   {"<leader>t", group="Toggles"},
-  {"<leader>tf", ":TZAtaraxis<cr>", desc="Focus"},
   {"<leader>ts", ":LiveServerToggle<cr>", desc="LiveServerToggle"},
   {"<leader>tw", ":setlocal wrap!<cr>", desc="Word wrapping"},
 })

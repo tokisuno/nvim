@@ -5,6 +5,15 @@ return {
 	{"numToStr/Comment.nvim"},
 	{"kylechui/nvim-surround"},
   {"HiPhish/rainbow-delimiters.nvim"},
+  {"ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+		config = function ()
+			local harpoon = require('harpoon')
+      harpoon:setup()
+		end
+  },
+
   {"tamton-aquib/duck.nvim",
     config = function()
       vim.keymap.set('n', '<leader>dh', function() require("duck").hatch() end, {})

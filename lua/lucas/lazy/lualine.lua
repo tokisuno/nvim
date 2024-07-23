@@ -1,4 +1,7 @@
 return {
+  {"letieu/harpoon-lualine",
+    dependencies = { {"ThePrimeagen/harpoon", branch = "harpoon2",} },
+  },
   {'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function ()
@@ -23,9 +26,16 @@ return {
         },
         sections = {
           lualine_a = {'mode'},
-          lualine_b = {'branch', 'diff', 'diagnostics'},
+          lualine_b = {'branch', 'diagnostics'},
           lualine_c = {'buffers'},
-          lualine_x = {'encoding', 'fileformat', 'filetype'},
+          lualine_x = { 'diff', {
+            "harpoon2",
+            icon = '♥',
+            indicators = { "h", "j", "k", "l" },
+            active_indicators = { "H", "J", "K", "L" },
+            _separator = " ",
+            no_harpoon = "Harpoon not loaded",
+          }, 'encoding', 'fileformat', 'filetype'},
           lualine_y = {'progress'},
           lualine_z = {'location'}
         },
