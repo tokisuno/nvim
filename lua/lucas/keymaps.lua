@@ -81,6 +81,8 @@ harpoon:extend({
 wk.add({
   {"<leader>c", group="compile"},
   {"<leader>cn", ":!node %<cr>", desc="Node.js"},
+  {"<leader>cc", ":!gcc % -o asdf && ./asdf<cr>", desc="Compile C"},
+  {"<leader>ck", ":!gcc -O -Wall -W -pedantic -ansi -std=c99 -o asdf %<cr>", desc="Modern Approach C Flags"},
 
   -- Finding/managing files
   {"<leader>f", group="Files"},
@@ -89,8 +91,9 @@ wk.add({
   {"<leader>ff", function() builtin.find_files(themes.get_dropdown({})) end, desc="Find files"},
   {"<leader>fb", function() builtin.buffers(themes.get_dropdown({})) end, desc="Open buffers"},
 
-  -- Legacy keymap (opens oil)
-  {"<leader><leader>", ":e .<cr>", desc="Explorador de archivos"},
+  -- Opening oil.nvim 
+  {"<localleader><localleader>", ":e .<cr>", desc="Explorador de archivos"},
+  {"<leader>pv", ":e .<cr>", desc="Explorador de archivos"},
 
   -- Opening lazy.nvim menu
   {"<leader>o", ":Lazy<cr>", desc="Open Lazy"},

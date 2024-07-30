@@ -1,11 +1,4 @@
 return {
-  {'MeanderingProgrammer/markdown.nvim',
-      name = 'render-markdown',
-      dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-      config = function()
-        require('render-markdown').setup({})
-      end,
-    },
     {'Lukesmithxyz/vimling', ft = {"tex", "md"}},
     {'xuhdev/vim-latex-live-preview', ft = {"tex"}},
     {'lervag/vimtex',
