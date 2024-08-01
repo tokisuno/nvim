@@ -35,3 +35,30 @@ ls.add_snippets('c', {
     })
   ),
 })
+
+ls.add_snippets('javascript', {
+  s(";lt", fmt(
+    [[
+    console.log(`{}`);
+    ]],
+    {
+      i(1)
+    })
+  ),
+  s(";ls", fmt(
+    [[
+    console.log('{}');
+    ]],
+    {
+      i(1)
+    })
+  ),
+  s(";ld", fmt(
+    [[
+    console.log("{}");
+    ]],
+    {
+      i(1)
+    })
+  ),
+})
