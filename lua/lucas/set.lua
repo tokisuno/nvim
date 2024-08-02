@@ -77,5 +77,5 @@ set.showmatch = true
 
 -- misc --
 set.mouse='a'
-set.conceallevel=2
+set.conceallevel=0
 vim.cmd("set guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20")

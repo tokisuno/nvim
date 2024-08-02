@@ -2,8 +2,20 @@ return {
   {'nvim-treesitter/nvim-treesitter'},
   {'lewis6991/gitsigns.nvim'},
   {'nvim-lua/plenary.nvim'},
+
 	{"numToStr/Comment.nvim"},
-	{"kylechui/nvim-surround"},
+  {'numToStr/FTerm.nvim',
+    config = function ()
+      require('FTerm').setup({
+        border = 'double',
+        dimensions = {
+          height = 0.9,
+          width = 0.9,
+        },
+      })
+    end
+  },
+
   {"HiPhish/rainbow-delimiters.nvim"},
   {"ThePrimeagen/harpoon",
     branch = "harpoon2",

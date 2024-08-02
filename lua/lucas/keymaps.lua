@@ -45,16 +45,9 @@ k("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })
 -- ctrl-backspace when in insert mode
 k("i", "<C-h>", "<C-w>", { silent = true })
 
--- luasnip keymaps
--- k({"i"     }, "<C-k>", function() ls.expand() end, {silent = true})
--- k({"i", "s"}, "<C-r>", function() ls.jump( 1) end, {silent = true})
--- k({"i", "s"}, "<C-e>", function() ls.jump(-1) end, {silent = true})
--- k({"i", "s"}, "<C-l>", function()
---   if ls.choice_active() then
---     ls.change_choice(1)
---   end
--- end, {silent = true})
-
+-- FTerm keybinds
+k('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>')
+k('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 
 -- harpoon2: electric boogaloo
 k("n", "<leader>a", function() harpoon:list():add() end)
