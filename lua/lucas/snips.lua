@@ -37,7 +37,7 @@ ls.add_snippets('c', {
 })
 
 ls.add_snippets('javascript', {
-  s(";lt", fmt(
+  s("clt", fmt(
     [[
     console.log(`{}`);
     ]],
@@ -45,7 +45,7 @@ ls.add_snippets('javascript', {
       i(1)
     })
   ),
-  s(";ls", fmt(
+  s("cls", fmt(
     [[
     console.log('{}');
     ]],
@@ -53,7 +53,7 @@ ls.add_snippets('javascript', {
       i(1)
     })
   ),
-  s(";ld", fmt(
+  s("cld", fmt(
     [[
     console.log("{}");
     ]],
