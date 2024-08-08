@@ -6,3 +6,7 @@ P = function(...)
   print(unpack(args))
   return ...
 end
+
+F = function()
+  vim.cmd(":%!jq '.'")
+end
