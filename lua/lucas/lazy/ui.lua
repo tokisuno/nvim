@@ -2,8 +2,12 @@ return {
   {'nvim-treesitter/nvim-treesitter'},
   {'lewis6991/gitsigns.nvim'},
   {'nvim-lua/plenary.nvim'},
-
 	{"numToStr/Comment.nvim"},
+  {'mvllow/modes.nvim',
+    config = function ()
+      require('modes').setup()
+    end
+  },
   {'numToStr/FTerm.nvim',
     config = function ()
       require('FTerm').setup({
@@ -43,14 +47,6 @@ return {
 			require("fzf-lua").setup({})
 		end
 	},
-  {"folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-    config = function ()
-      vim.cmd("colorscheme tokyonight-storm")
-    end
-  },
   {"norcalli/nvim-colorizer.lua", config = function()
 			require('colorizer').setup()
 		end
