@@ -8,6 +8,7 @@ return {
       require('modes').setup()
     end
   },
+  {"shortcuts/no-neck-pain.nvim", version = "*"},
   {'numToStr/FTerm.nvim',
     config = function ()
       require('FTerm').setup({
