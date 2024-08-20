@@ -6,8 +6,9 @@ return {
       'sharkdp/fd'
     },
     version = '0.1.5',
-    config = function (_, opts)
-      require("telescope").setup(opts)
+    config = function ()
+      require("telescope").setup({
+      })
     end
   },
 }
