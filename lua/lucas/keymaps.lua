@@ -50,10 +50,10 @@ k('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 -- harpoon2: electric boogaloo
 k("n", "<leader>a", function() harpoon:list():add() end)
 k("n", "<leader>e", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-k("n", "<leader>1", function() harpoon:list():select(1) end)
-k("n", "<leader>2", function() harpoon:list():select(2) end)
-k("n", "<leader>3", function() harpoon:list():select(3) end)
-k("n", "<leader>4", function() harpoon:list():select(4) end)
+k("n", "<leader>h", function() harpoon:list():select(1) end)
+k("n", "<leader>j", function() harpoon:list():select(2) end)
+k("n", "<leader>k", function() harpoon:list():select(3) end)
+k("n", "<leader>l", function() harpoon:list():select(4) end)
 
 harpoon:extend({
   UI_CREATE = function(cx)
@@ -77,10 +77,12 @@ wk.add({
 
   -- Finding/managing files
   {"<leader>f", group="Files"},
-  {"<leader>fg", function() builtin.live_grep(themes.get_dropdown({})) end, desc="Live grep"},
-  {"<leader>fh", function() builtin.help_tags(themes.get_dropdown({})) end, desc="Help tags"},
-  {"<leader>ff", function() builtin.find_files(themes.get_dropdown({})) end, desc="Find files"},
-  {"<leader>fb", function() builtin.buffers(themes.get_dropdown({})) end, desc="Open buffers"},
+  {"<leader>fb", builtin.buffers, desc="Open buffers"},
+  {"<leader>ff", builtin.find_files, desc="Find files"},
+  {"<leader>fg", builtin.live_grep, desc="Live grep"},
+  {"<leader>fh", builtin.help_tags, desc="Help tags"},
+  {"<leader>fm", builtin.man_pages, desc="Open man pages"},
+  {"<leader>fo", builtin.oldfiles, desc="Find files"},
 
   {"<localleader><localleader>", ":e .<cr>", desc="Explorador de archivos"},
   {"<leader>pv", ":e .<cr>", desc="Explorador de archivos"},
