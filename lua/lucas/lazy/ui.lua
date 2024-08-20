@@ -2,7 +2,6 @@ return {
   {'nvim-treesitter/nvim-treesitter'},
   {'lewis6991/gitsigns.nvim'},
   {'nvim-lua/plenary.nvim'},
-	{"numToStr/Comment.nvim"},
   {'mvllow/modes.nvim',
     config = function ()
       require('modes').setup()
@@ -29,14 +28,6 @@ return {
 			local harpoon = require('harpoon')
       harpoon:setup()
 		end
-  },
-
-  {"tamton-aquib/duck.nvim",
-    config = function()
-      vim.keymap.set('n', '<leader>dh', function() require("duck").hatch() end, {})
-      vim.keymap.set('n', '<leader>dk', function() require("duck").cook() end, {})
-      vim.keymap.set('n', '<leader>da', function() require("duck").cook_all() end, {})
-    end
   },
   {'nvimdev/hlsearch.nvim',
     event = 'BufRead',
