@@ -24,7 +24,6 @@ return {
           'vimls',
           'marksman',
           'rust_analyzer',
-          'tsserver',
         },
         handlers = {
           lsp.default_setup,
@@ -34,10 +33,6 @@ return {
       local lspconfig = require('lspconfig')
 
       lspconfig.emmet_ls.setup{}
-      lspconfig.tsserver.setup{
-        filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-        root_dir = function() return vim.loop.cwd() end
-      }
 
       lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 

@@ -12,7 +12,7 @@ return {
           registers = false,
           spelling = {
             enabled = true,
-            suggestions = 10,
+            suggestions = 8,
           },
           presets = {
             operators = true, -- adds help for operators like d, y, ...
@@ -37,10 +37,8 @@ return {
           scroll_up = "<c-u>", -- binding to scroll up inside the popup
         },
         window = {
-          border = "double", -- none, single, double, shadow
+          border = "shadow", -- none, single, double, shadow
           position = "bottom", -- bottom, top
-          padding = { 1, 2, 1, 2 }, -- extra window padding [top, right, bottom, left]
-          margin = { 1, 0, 1, 0 },
           winblend = 0, -- value between 0-100 0 for fully opaque and 100 for fully transparent
           zindex = 1000, -- positive value to position WhichKey above other floating windows.
         },
@@ -55,8 +53,6 @@ return {
         show_help = true, -- show a help message in the command line for using WhichKey
         show_keys = true, -- show the currently pressed key and its label as a message in the command line
         triggers = "auto", -- automatically setup triggers
-        -- triggers = {"<leader>"} -- or specifiy a list manually
-        -- list of triggers, where WhichKey should not wait for timeoutlen and show immediately
         triggers_nowait = {
           -- marks
           "`",

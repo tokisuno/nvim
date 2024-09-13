@@ -1,59 +1,49 @@
-local k    = vim.keymap.set
+local map    = vim.keymap.set
 local wk   = require("which-key")
-local np = require("no-neck-pain")
-local opts = { noremap = true, silent = true }
+local opts = { noremap=true, silent=false }
 
 local builtin = require('telescope.builtin')
-local themes  = require('telescope.themes')
 local harpoon = require('harpoon')
 
 vim.g.mapleader      = " "
 vim.g.maplocalleader = ","
 
--- Byebye arrow keys
-k('', '<up>',    '<nop>')
-k('', '<down>',  '<nop>')
-k('', '<left>',  '<nop>')
-k('', '<right>', '<nop>')
+-- Removing arrow key navigation (to turn into something later)
+map('', '<up>',    '<nop>')
+map('', '<down>',  '<nop>')
+map('', '<left>',  '<nop>')
+map('', '<right>', '<nop>')
 
 -- Buffer movement
-k('n', '<C-p>', ':bprev<cr>')
-k('n', '<C-n>', ':bnext<cr>')
+map('n', '<C-p>', ':bprev<cr>')
+map('n', '<C-n>', ':bnext<cr>')
 
 -- Resize windows
-k('n', '<M-9>', '5<C-w>>')
-k('n', '<M-0>', '5<C-w><')
+map('n', '<M-9>', '5<C-w>>')
+map('n', '<M-0>', '5<C-w><')
 
 -- Quality of life
-k("n", "<C-d>", "<C-d>zz")
-k("n", "<C-u>", "<C-u>zz")
-k("n", "n", "nzzzv")
-k("n", "N", "Nzzzv")
-k("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-k({"n", "v", "s"}, "<leader>i", "=")
-k({"n", "v", "s"}, "<M-p>", "%") -- M(atch) p(aren) (huge brain)
-k("n", "<A-o>", "o<esc>")
-k("n", "<A-O>", "O<esc>")
-k("n", "<leader>dd", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
-k("n", "<leader>dt", ":pu=strftime('%c')<cr>")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
+map("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+map("n", "<A-o>", "o<esc>")
+map("n", "<A-O>", "O<esc>")
+map("n", "<leader>dd", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+map("n", "<leader>dt", ":pu=strftime('%c')<cr>")
 
 -- Sets launch perms for file being written to
-k("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })
+map("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- ctrl-backspace when in insert mode
-k("i", "<C-h>", "<C-w>", { silent = true })
-
--- FTerm keybinds
-k('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>')
-k('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+map("i", "<C-h>", "<C-w>", { silent = true })
 
 -- harpoon2: electric boogaloo
-k("n", "<leader>a", function() harpoon:list():add() end)
-k("n", "<leader>e", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-k("n", "<leader>h", function() harpoon:list():select(1) end)
-k("n", "<leader>j", function() harpoon:list():select(2) end)
-k("n", "<leader>k", function() harpoon:list():select(3) end)
-k("n", "<leader>l", function() harpoon:list():select(4) end)
+map("n", "<leader>a", function() harpoon:list():add() end)
+map("n", "<leader>e", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+map("n", "<leader>h", function() harpoon:list():select(1) end)
+map("n", "<leader>j", function() harpoon:list():select(2) end)
+map("n", "<leader>k", function() harpoon:list():select(3) end)
+map("n", "<leader>l", function() harpoon:list():select(4) end)
 
 harpoon:extend({
   UI_CREATE = function(cx)
@@ -75,7 +65,6 @@ wk.add({
   {"<leader>cc", ":!gcc % -o asdf && ./asdf<cr>", desc="Compile C"},
   {"<leader>ck", ":!gcc -O -Wall -W -pedantic -ansi -std=c99 -o asdf %<cr>", desc="Modern Approach C Flags"},
 
-  -- Finding/managing files
   {"<leader>f", group="Files"},
   {"<leader>fb", builtin.buffers, desc="Open buffers"},
   {"<leader>ff", builtin.find_files, desc="Find files"},
@@ -84,7 +73,6 @@ wk.add({
   {"<leader>fm", builtin.man_pages, desc="Open man pages"},
   {"<leader>fo", builtin.oldfiles, desc="Find files"},
 
-  {"<localleader><localleader>", ":e .<cr>", desc="Explorador de archivos"},
   {"<leader>pv", ":e .<cr>", desc="Explorador de archivos"},
 
   {"<leader>o", ":Lazy<cr>", desc="Open Lazy"},
@@ -102,4 +90,6 @@ wk.add({
   {"<leader>ts", ":LiveServerToggle<cr>", desc="LiveServerToggle"},
   {"<leader>tw", ":setlocal wrap!<cr>", desc="Word wrapping"},
   {"<leader>tn", ":NoNeckPain<cr>", desc="Centre workspace"},
+
+  {"<leader>n", group="Neorg"},
 })

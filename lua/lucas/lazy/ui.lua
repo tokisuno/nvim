@@ -1,25 +1,18 @@
 return {
+  {'nvim-lua/plenary.nvim'},
   {'nvim-treesitter/nvim-treesitter'},
   {'lewis6991/gitsigns.nvim'},
-  {'nvim-lua/plenary.nvim'},
+  {"karb94/neoscroll.nvim",
+		config = function ()
+			require('neoscroll').setup({})
+		end
+  },
   {'mvllow/modes.nvim',
     config = function ()
       require('modes').setup()
     end
   },
   {"shortcuts/no-neck-pain.nvim", version = "*"},
-  {'numToStr/FTerm.nvim',
-    config = function ()
-      require('FTerm').setup({
-        border = 'double',
-        dimensions = {
-          height = 0.9,
-          width = 0.9,
-        },
-      })
-    end
-  },
-
   {"HiPhish/rainbow-delimiters.nvim"},
   {"ThePrimeagen/harpoon",
     branch = "harpoon2",

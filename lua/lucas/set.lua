@@ -40,6 +40,9 @@ set.smartcase = false
 set.breakindent = true
 set.ttimeoutlen=50
 
+set.foldmethod = "indent"
+set.foldlevel = 4
+
 augroup('tabsize2', { clear = true })
 autocmd('FileType', {
     group = 'tabsize2',
@@ -49,6 +52,7 @@ autocmd('FileType', {
         'lua',
         'luajit',
         'rs',
+        'rb'
     },
     callback = function()
         vim.cmd('setlocal tabstop=2 shiftwidth=2 softtabstop=2')
@@ -61,6 +65,7 @@ autocmd('FileType', {
   pattern = {
     'markdown',
     'tex',
+    'norg',
   },
   callback = function()
     local opts = { noremap = true, silent = true }
@@ -70,6 +75,15 @@ autocmd('FileType', {
     vim.api.nvim_buf_set_keymap(0, 'n', 'k', 'gk', opts)
   end,
 })
+
+augroup('neorg_settings', { clear = true })
+autocmd('FileType', {
+  group = 'neorg_settings',
+  pattern = { 'norg' },
+  callback = function ()
+    vim.opt_local.conceallevel = 3
+  end
+  })
 
 -- show --
 set.showmode = true
