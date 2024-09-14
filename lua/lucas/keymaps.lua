@@ -1,5 +1,4 @@
 local map    = vim.keymap.set
-local wk   = require("which-key")
 local opts = { noremap=true, silent=false }
 
 local builtin = require('telescope.builtin')
@@ -7,6 +6,10 @@ local harpoon = require('harpoon')
 
 vim.g.mapleader      = " "
 vim.g.maplocalleader = ","
+
+-- Neorg keybinds
+map("n", "<leader>nj", ":Neorg journal today")
+map("n", "<leader>nt", ":Neorg toc<cr>")
 
 -- Removing arrow key navigation (to turn into something later)
 map('', '<up>',    '<nop>')
@@ -37,6 +40,7 @@ map("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })
 -- ctrl-backspace when in insert mode
 map("i", "<C-h>", "<C-w>", { silent = true })
 
+
 -- harpoon2: electric boogaloo
 map("n", "<leader>a", function() harpoon:list():add() end)
 map("n", "<leader>e", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
@@ -57,39 +61,27 @@ harpoon:extend({
   end,
 })
 
+map("n", "<leader>cn", ":!node %<cr>")
+map("n", "<leader>cc", ":!gcc % -o asdf && ./asdf<cr>")
+map("n", "<leader>ck", ":!gcc -O -Wall -W -pedantic -ansi -std=c99 -o asdf %<cr>")
 
--- # which-key.nvim # --
-wk.add({
-  {"<leader>c", group="compile"},
-  {"<leader>cn", ":!node %<cr>", desc="Node.js"},
-  {"<leader>cc", ":!gcc % -o asdf && ./asdf<cr>", desc="Compile C"},
-  {"<leader>ck", ":!gcc -O -Wall -W -pedantic -ansi -std=c99 -o asdf %<cr>", desc="Modern Approach C Flags"},
+map("n", "<leader>pv", ":e .<cr>")
+map("n", "<leader>o", ":Lazy<cr>")
 
-  {"<leader>f", group="Files"},
-  {"<leader>fb", builtin.buffers, desc="Open buffers"},
-  {"<leader>ff", builtin.find_files, desc="Find files"},
-  {"<leader>fg", builtin.live_grep, desc="Live grep"},
-  {"<leader>fh", builtin.help_tags, desc="Help tags"},
-  {"<leader>fm", builtin.man_pages, desc="Open man pages"},
-  {"<leader>fo", builtin.oldfiles, desc="Find files"},
+map("n", "<leader>ts", ":LiveServerToggle<cr>")
+map("n", "<leader>tw", ":setlocal wrap!<cr>")
+map("n", "<leader>tz", ":ZenMode<cr>")
 
-  {"<leader>pv", ":e .<cr>", desc="Explorador de archivos"},
+map("n", "<leader>fb", builtin.buffers)
+map("n", "<leader>ff", builtin.find_files)
+map("n", "<leader>fg", builtin.live_grep)
+map("n", "<leader>fh", builtin.help_tags)
+map("n", "<leader>fm", builtin.man_pages)
+map("n", "<leader>fo", builtin.oldfiles)
 
-  {"<leader>o", ":Lazy<cr>", desc="Open Lazy"},
+map("n", "<leader>Q", ":q!<Cr>")
+map("n", "<leader>qe", ":q<cr>")
+map("n", "<leader>qq", vim.cmd.bd)
 
-  {"<leader>q", group="Quit"},
-  {"<leader>Q", ":q!<Cr>", desc=":q!"},
-  {"<leader>qe", ":q<cr>", desc="Quits out of window"},
-  {"<leader>qq", vim.cmd.bd, desc="Unload buffer"},
-
-  {"<leader>w", group="Write"},
-  {"<leader>wf", ":w<cr>", desc="Save"},
-  {"<leader>wq", ":wq<cr>", desc="Save and quit"},
-
-  {"<leader>t", group="Toggles"},
-  {"<leader>ts", ":LiveServerToggle<cr>", desc="LiveServerToggle"},
-  {"<leader>tw", ":setlocal wrap!<cr>", desc="Word wrapping"},
-  {"<leader>tn", ":NoNeckPain<cr>", desc="Centre workspace"},
-
-  {"<leader>n", group="Neorg"},
-})
+map("n", "<leader>wf", ":w<cr>")
+map("n", "<leader>wq", ":wq<cr>")

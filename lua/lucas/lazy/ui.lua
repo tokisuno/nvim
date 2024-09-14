@@ -12,7 +12,6 @@ return {
       require('modes').setup()
     end
   },
-  {"shortcuts/no-neck-pain.nvim", version = "*"},
   {"HiPhish/rainbow-delimiters.nvim"},
   {"ThePrimeagen/harpoon",
     branch = "harpoon2",
