@@ -2,6 +2,8 @@ local set = vim.opt
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
+vim.g.have_nerd_font = true
+
 --# opts #--
 set.termguicolors = true
 set.guicursor = ""
@@ -58,32 +60,6 @@ autocmd('FileType', {
         vim.cmd('setlocal tabstop=2 shiftwidth=2 softtabstop=2')
     end,
 })
-
-augroup('set_wrap', { clear = true })
-autocmd('FileType', {
-  group = 'set_wrap',
-  pattern = {
-    'markdown',
-    'tex',
-    'norg',
-  },
-  callback = function()
-    local opts = { noremap = true, silent = true }
-    vim.opt_local.spell = true
-    vim.opt_local.wrap = true
-    vim.api.nvim_buf_set_keymap(0, 'n', 'j', 'gj', opts)
-    vim.api.nvim_buf_set_keymap(0, 'n', 'k', 'gk', opts)
-  end,
-})
-
-augroup('neorg_settings', { clear = true })
-autocmd('FileType', {
-  group = 'neorg_settings',
-  pattern = { 'norg' },
-  callback = function ()
-    vim.opt_local.conceallevel = 3
-  end
-  })
 
 -- show --
 set.showmode = true
