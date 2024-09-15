@@ -8,17 +8,9 @@ local fmt = require('luasnip.extras.fmt').fmt
 local c = ls.choice_node
 local f = ls.function_node
 
-ls.add_snippets('lua', {
-  s("pri", {
-    t("print('"),
-    i(1),
-    t("')")
-  })
-})
-
 ls.add_snippets('c', {
   s("#N", fmt(
-    [[ 
+    [[
       #include <stdio.h>
 
       int main(void)
@@ -36,29 +28,3 @@ ls.add_snippets('c', {
   ),
 })
 
-ls.add_snippets('javascript', {
-  s("clt", fmt(
-    [[
-    console.log(`{}`);
-    ]],
-    {
-      i(1)
-    })
-  ),
-  s("cls", fmt(
-    [[
-    console.log('{}');
-    ]],
-    {
-      i(1)
-    })
-  ),
-  s("cld", fmt(
-    [[
-    console.log("{}");
-    ]],
-    {
-      i(1)
-    })
-  ),
-})

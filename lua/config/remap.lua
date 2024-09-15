@@ -10,6 +10,7 @@ vim.g.maplocalleader = ","
 -- Neorg keybinds
 map("n", "<leader>nj", ":Neorg journal today")
 map("n", "<leader>nt", ":Neorg toc<cr>")
+map("n", ";", ":")
 
 -- Removing arrow key navigation (to turn into something later)
 map('', '<up>',    '<nop>')
@@ -83,5 +84,3 @@ map("n", "<leader>Q", ":q!<Cr>")
 map("n", "<leader>qe", ":q<cr>")
 map("n", "<leader>qq", vim.cmd.bd)
 
-map("n", "<leader>wf", ":w<cr>")
-map("n", "<leader>wq", ":wq<cr>")

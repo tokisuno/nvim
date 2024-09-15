@@ -2,6 +2,7 @@ return {
   {'nvim-lua/plenary.nvim'},
   {'nvim-treesitter/nvim-treesitter'},
   {'lewis6991/gitsigns.nvim'},
+  {'pocco81/auto-save.nvim'},
   {"karb94/neoscroll.nvim",
 		config = function ()
 			require('neoscroll').setup({})
