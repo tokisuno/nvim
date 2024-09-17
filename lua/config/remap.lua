@@ -1,4 +1,4 @@
-local map    = vim.keymap.set
+local map = vim.keymap.set
 local opts = { noremap=true, silent=false }
 
 local builtin = require('telescope.builtin')
@@ -8,7 +8,7 @@ vim.g.mapleader      = " "
 vim.g.maplocalleader = ","
 
 -- Neorg keybinds
-map("n", "<leader>nj", ":Neorg journal today")
+map("n", "<leader>nj", ":Neorg journal today<cr>")
 map("n", "<leader>nt", ":Neorg toc<cr>")
 map("n", ";", ":")
 

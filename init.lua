@@ -7,6 +7,7 @@ require("config.remap")
 
 require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/snipppets"})
 
+require('mini.ai').setup()
 require('mini.clue').setup()
 require('mini.comment').setup()
 require('mini.cursorword').setup()

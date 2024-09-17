@@ -6,6 +6,7 @@ require("neorg").setup({
         icon_preset = 'diamond'
       }
     },
+
     ["core.completion"] = {
       config = {
         engine = "nvim-cmp",
@@ -21,6 +22,7 @@ require("neorg").setup({
         default_workspace = "life",
       },
     },
+    ["core.export"] = {},
   },
 })
 
