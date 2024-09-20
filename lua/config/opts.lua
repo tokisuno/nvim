@@ -37,11 +37,12 @@ set.updatetime = 50
 set.scrolloff = 10
 set.wrap = true
 set.linebreak = true
-set.colorcolumn="0"
-set.smartcase = false
+set.colorcolumn = "0"
+set.ignorecase = true
+set.smartcase = true
+set.inccommand = 'split'
 set.breakindent = true
-set.ttimeoutlen=50
-
+set.ttimeoutlen = 50
 set.foldmethod = "indent"
 set.foldlevel = 4
 

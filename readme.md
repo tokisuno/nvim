@@ -1,14 +1,11 @@
 # tokisuno's Neovim Setup
 Neovim 0.10+ configuration
 
-# interesting features
-- remapped ; to : for ease of access
-- mini.plugins are everywhere
-- norg
-- autosaving
-- lsp
-- mason cmp
-- snippets
+# featuring...
+- A lot of `mini.plugins` in `init.lua`
+- Autosaving
+- Autocompletion with LuaSnips + mason-cmp
+- LSP setup with lsp-zero
 
 # structure
 - `nvim/init.lua`

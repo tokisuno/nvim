@@ -23,6 +23,8 @@ require("neorg").setup({
       },
     },
     ["core.export"] = {},
+    ["core.summary"] = {},
+    ["core.text-objects"] = {},
   },
 })
 
