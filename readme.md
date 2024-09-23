@@ -3,7 +3,6 @@ Neovim 0.10+ configuration
 
 # featuring...
 - A lot of `mini.plugins` in `init.lua`
-- Autosaving
 - Autocompletion with LuaSnips + mason-cmp
 - LSP setup with lsp-zero
 
