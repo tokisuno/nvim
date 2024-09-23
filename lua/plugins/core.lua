@@ -11,15 +11,22 @@ return {
       'saadparwaiz1/cmp_luasnip'
     },
   },
-  {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
   {'neovim/nvim-lspconfig'},
+  {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
   {'echasnovski/mini.nvim', version = false},
   {'nvim-lua/plenary.nvim'},
   {'lewis6991/gitsigns.nvim'},
   {'HiPhish/rainbow-delimiters.nvim'},
+  {'folke/zen-mode.nvim'},
   {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
-  {'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
+  {'nvim-lualine/lualine.nvim'},
+  {"ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function ()
+      local harpoon = require('harpoon')
+      harpoon:setup()
+    end
   },
   {"letieu/harpoon-lualine",
     dependencies = {
@@ -29,29 +36,11 @@ return {
       }
     },
   },
-  {"ThePrimeagen/harpoon",
-    branch = "harpoon2",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function ()
-      local harpoon = require('harpoon')
-      harpoon:setup()
-    end
-  },
-  {'mvllow/modes.nvim',
-    config = function()
-      require('modes').setup()
-    end
-  },
   {'nvimdev/hlsearch.nvim',
     event = 'BufRead',
     config = function()
       require('hlsearch').setup()
     end,
-  },
-  {"ibhagwan/fzf-lua",
-    config = function()
-      require("fzf-lua").setup({})
-    end
   },
   {"norcalli/nvim-colorizer.lua",
     config = function()

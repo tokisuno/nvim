@@ -1,12 +1,7 @@
 return {
-  {
-    'Lukesmithxyz/vimling', ft = {"tex", "md"}
-  },
-  {
-    'xuhdev/vim-latex-live-preview', ft = {"tex"}
-  },
-  {
-    'lervag/vimtex',
+  {'Lukesmithxyz/vimling', ft = {"tex", "md"}},
+  {'xuhdev/vim-latex-live-preview', ft = {"tex"}},
+  {'lervag/vimtex',
     ft = {"tex"},
     config = function()
       vim.g['tex_flavor'] = 'latex'
@@ -18,9 +13,5 @@ return {
       vim.g['vimtex_view_automatic'] = 1
     end
   },
-  {
-    "nvim-neorg/neorg",
-    lazy = false,
-    version = "*",
-  },
+  {"nvim-neorg/neorg", lazy = false, version = "*"},
 }
