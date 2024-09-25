@@ -4,6 +4,9 @@ local opts = { noremap=true, silent=false }
 local builtin = require('telescope.builtin')
 local harpoon = require('harpoon')
 
+local functions = require("config.funcs")
+-- local toggle_signs = require("funcs.toggle_signs")
+
 vim.g.mapleader      = " "
 vim.g.maplocalleader = ","
 
@@ -35,11 +38,20 @@ map("n", "<leader>dd", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 map("n", "<leader>dt", ":pu=strftime('%c')<cr>")
 
 -- Sets launch perms for file being written to
-map("n", "<leader>xx", "<cmd>!chmod +x %<CR>", { silent = true })
+map("n", "<leader>se", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- ctrl-backspace when in insert mode
 map("i", "<C-h>", "<C-w>", { silent = true })
 
+map("n", "<C-s>", functions.toggle_signs)
+
+-- trouble.nvim
+map("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>")
+map("n", "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>")
+map("n", "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>")
+map("n", "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>")
+map("n", "<leader>xL", "<cmd>Trouble loclist toggle<cr>")
+map("n", "<leader>xQ", "<cmd>Trouble qflist toggle<cr>")
 
 -- harpoon2: electric boogaloo
 map("n", "<leader>a", function() harpoon:list():add() end)

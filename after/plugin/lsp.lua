@@ -1,10 +1,4 @@
 local lsp = require('lsp-zero').preset("recommended")
-lsp.set_sign_icons({
-  error = '✘',
-  warn = '▲',
-  hint = '⚑',
-  info = '»'
-})
 lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({buffer = bufnr})
 end)
@@ -19,6 +13,7 @@ require('mason-lspconfig').setup({
     'clangd',
     'vimls',
     'marksman',
+    'rubocop',
     'rust_analyzer',
   },
   handlers = {

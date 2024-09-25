@@ -2,6 +2,8 @@ return {
   {'nvim-treesitter/nvim-treesitter'},
   {"williamboman/mason.nvim"},
   {"williamboman/mason-lspconfig.nvim"},
+  {'neovim/nvim-lspconfig'},
+  {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
   {'hrsh7th/cmp-nvim-lsp'},
   {'hrsh7th/nvim-cmp'},
   {"L3MON4D3/LuaSnip",
@@ -11,13 +13,15 @@ return {
       'saadparwaiz1/cmp_luasnip'
     },
   },
-  {'neovim/nvim-lspconfig'},
-  {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
+
   {'echasnovski/mini.nvim', version = false},
+
+  {'dgagn/diagflow.nvim'},
   {'nvim-lua/plenary.nvim'},
   {'lewis6991/gitsigns.nvim'},
   {'HiPhish/rainbow-delimiters.nvim'},
   {'folke/zen-mode.nvim'},
+  {'folke/trouble.nvim', opts = {}, cmd = "Trouble"},
   {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
   {'nvim-lualine/lualine.nvim'},
   {"ThePrimeagen/harpoon",
@@ -36,6 +40,7 @@ return {
       }
     },
   },
+
   {'nvimdev/hlsearch.nvim',
     event = 'BufRead',
     config = function()
