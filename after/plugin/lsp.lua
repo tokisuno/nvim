@@ -13,7 +13,6 @@ require('mason-lspconfig').setup({
     'clangd',
     'vimls',
     'marksman',
-    'rubocop',
     'rust_analyzer',
   },
   handlers = {
