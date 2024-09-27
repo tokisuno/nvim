@@ -1,7 +1,15 @@
 return {
+  -- {
+  --   dir = "~/code/lua/plugins/vling",
+  --   name = "vling",
+  --   dependencies = "tjdevries/stackmap.nvim",
+  --   config = function ()
+  --     require("vling")
+  --   end
+  -- },
+
   {
-    dir = "~/code/lua/plugins/vling",
-    name = "vling",
+    "tokisuno/vling",
     dependencies = "tjdevries/stackmap.nvim",
     config = function ()
       require("vling")
