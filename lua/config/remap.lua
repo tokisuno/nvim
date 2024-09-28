@@ -3,16 +3,23 @@ local opts = { noremap=true, silent=false }
 
 local builtin = require('telescope.builtin')
 local harpoon = require('harpoon')
+local vling = require('vling')
 
 local functions = require("config.funcs")
--- local toggle_signs = require("funcs.toggle_signs")
 
 vim.g.mapleader      = " "
 vim.g.maplocalleader = ","
 
--- Neorg keybinds
-map("n", "<leader>nj", ":Neorg journal today<cr>")
-map("n", "<leader>nt", ":Neorg toc<cr>")
+-- vling
+map("n", "<leader>td", function () vling.deadkeys.toggle() end)
+map("n", "<leader>ti", function () vling.ipa.toggle() end)
+
+-- Neorg
+map("n", "<leader>nj", ":Neorg journal today<cr>", { desc = "Open journal buffer" })
+map("n", "<leader>nt", ":Neorg toc<cr>", { desc = "Generate TOC in buffer" })
+map("n", "<leader>nwl", ":Neorg workspace life<cr>", { desc = "Go to workspace:life" })
+map("n", "<leader>nwn", ":Neorg workspace notes<cr>", { desc = "Go to workspace:notes" })
+map("n", "<leader>nwy", ":Neorg workspace yt<cr>", { desc = "Go to workspace:yt" })
 
 -- Removing arrow key navigation (to turn into something later)
 map('', '<up>',    '<nop>')
@@ -23,10 +30,6 @@ map('', '<right>', '<nop>')
 -- Buffer movement
 map('n', '<C-p>', ':bprev<cr>')
 map('n', '<C-n>', ':bnext<cr>')
-
--- Resize windows
-map('n', '<M-9>', '5<C-w>>')
-map('n', '<M-0>', '5<C-w><')
 
 -- Quality of life
 map("n", "n", "nzzzv")
@@ -77,19 +80,19 @@ map("n", "<leader>cn", ":!node %<cr>")
 map("n", "<leader>cc", ":!gcc % -o asdf && ./asdf<cr>")
 map("n", "<leader>ck", ":!gcc -O -Wall -W -pedantic -ansi -std=c99 -o asdf %<cr>")
 
-map("n", "<leader>pv", ":e .<cr>")
-map("n", "<leader>o", ":Lazy<cr>")
+map("n", "<leader>pv", ":e .<cr>", { desc = "File explorer" })
+map("n", "<leader>o", ":Lazy<cr>", { desc = "Open lazy.nvim" })
 
 map("n", "<leader>ts", ":LiveServerToggle<cr>")
 map("n", "<leader>tw", ":setlocal wrap!<cr>")
 map("n", "<leader>tz", ":ZenMode<cr>")
 
-map("n", "<leader>fb", builtin.buffers)
-map("n", "<leader>ff", builtin.find_files)
-map("n", "<leader>fg", builtin.live_grep)
-map("n", "<leader>fh", builtin.help_tags)
-map("n", "<leader>fm", builtin.man_pages)
-map("n", "<leader>fo", builtin.oldfiles)
+map("n", "<leader>fb", builtin.buffers, { desc = "Buffers" })
+map("n", "<leader>ff", builtin.find_files, { desc = "Files" })
+map("n", "<leader>fg", builtin.live_grep, { desc = "Live grep" })
+map("n", "<leader>fh", builtin.help_tags, { desc = "Help tags" })
+map("n", "<leader>fm", builtin.man_pages, { desc = "Man pages" })
+map("n", "<leader>fo", builtin.oldfiles, {desc = "Old files" })
 
 map("n", "<leader>Q", ":q!<Cr>")
 map("n", "<leader>qe", ":q<cr>")
