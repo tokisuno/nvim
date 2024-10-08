@@ -1,19 +1,19 @@
 return {
+  {
+    dir = "~/code/lua/plugins/vling",
+    name = "vling",
+    config = function ()
+      require("vling")
+    end
+  },
+
   -- {
-  --   dir = "~/code/lua/plugins/vling",
-  --   name = "vling",
+  --   "tokisuno/vling",
+  --   branch = "abbreviations",
   --   dependencies = "tjdevries/stackmap.nvim",
   --   config = function ()
   --     require("vling")
   --   end
-  -- },
-
-  {
-    "tokisuno/vling",
-    dependencies = "tjdevries/stackmap.nvim",
-    config = function ()
-      require("vling")
-    end
-  }
+  -- }
 }
 

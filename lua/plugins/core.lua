@@ -52,12 +52,13 @@ return {
       require('colorizer').setup()
     end
   },
-  {"folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-    config = function ()
-      vim.cmd("colorscheme tokyonight-storm")
-    end
-  },
+{ "ellisonleao/gruvbox.nvim", priority = 1000 , config = true}
+  -- {"folke/tokyonight.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   opts = {},
+  --   config = function ()
+  --     vim.cmd("colorscheme tokyonight-storm")
+  --   end
+  -- },
 }

@@ -20,6 +20,7 @@ require("neorg").setup({
           yt = "~/Dropbox/neorg/yt",
         },
         default_workspace = "life",
+        use_popup = true,
       },
     },
     ["core.export"] = {},
@@ -44,6 +45,6 @@ require("neorg").setup({
     },
     ["core.summary"] = {},
     ["core.text-objects"] = {},
-  },
+  }
 })
 

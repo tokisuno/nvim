@@ -6,6 +6,8 @@ require("globals")
 require("config.opts")
 require("config.lazy")
 require("config.remap")
+vim.o.background = "dark"
+vim.cmd("colorscheme gruvbox")
 
 require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/snipppets"})
 
