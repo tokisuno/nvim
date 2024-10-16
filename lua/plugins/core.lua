@@ -1,3 +1,4 @@
+
 return {
   {'nvim-treesitter/nvim-treesitter'},
   {"williamboman/mason.nvim"},
@@ -5,14 +6,6 @@ return {
   {'neovim/nvim-lspconfig'},
   {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
   {'hrsh7th/cmp-nvim-lsp'},
-  {'hrsh7th/nvim-cmp'},
-  {"L3MON4D3/LuaSnip",
-    event = "InsertEnter",
-    dependencies = {
-      'rafamadriz/friendly-snippets',
-      'saadparwaiz1/cmp_luasnip'
-    },
-  },
 
   {'echasnovski/mini.nvim', version = false},
 
@@ -40,7 +33,6 @@ return {
       }
     },
   },
-
   {'nvimdev/hlsearch.nvim',
     event = 'BufRead',
     config = function()
@@ -52,13 +44,5 @@ return {
       require('colorizer').setup()
     end
   },
-{ "ellisonleao/gruvbox.nvim", priority = 1000 , config = true}
-  -- {"folke/tokyonight.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   opts = {},
-  --   config = function ()
-  --     vim.cmd("colorscheme tokyonight-storm")
-  --   end
-  -- },
+  { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true},
 }

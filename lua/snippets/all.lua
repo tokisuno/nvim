@@ -8,23 +8,6 @@ local fmt = require('luasnip.extras.fmt').fmt
 local c = ls.choice_node
 local f = ls.function_node
 
-ls.add_snippets('c', {
-  s("#N", fmt(
-    [[
-      #include <stdio.h>
-
-      int main(void)
-      {{
-        {}
-        return 0;
-      }}
-    ]],
-    {
-      i(1)
-    },
-    {
-      delimiters = "{}"
-    })
-  ),
+ls.add_snippets("all", {
+  s("noob", t("i know :/")),
 })
-

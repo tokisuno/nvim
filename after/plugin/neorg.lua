@@ -3,15 +3,10 @@ require("neorg").setup({
     ["core.defaults"] = {},
     ["core.concealer"] = {
       config = {
-        icon_preset = 'diamond'
+        icon_preset = 'basic'
       }
     },
 
-    ["core.completion"] = {
-      config = {
-        engine = "nvim-cmp",
-      },
-    },
     ["core.dirman"] = {
       config = {
         workspaces = {

@@ -7,6 +7,7 @@ require("telescope").setup({
       format = '',
       global_files = {
         os.getenv("HOME") .. "/Dropbox/latex/bibs/latam.bib",
+        os.getenv("HOME") .. "/Dropbox/latex/bibs/scitech_history.bib",
       },
       search_keys = { 'author', 'year', 'title' },
       -- Template for the formatted citation

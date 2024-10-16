@@ -44,7 +44,7 @@ set.inccommand = 'split'
 set.breakindent = true
 set.ttimeoutlen = 50
 set.foldmethod = "indent"
-set.foldlevel = 4
+set.foldlevel = 999
 
 augroup('tabsize2', { clear = true })
 autocmd('FileType', {
