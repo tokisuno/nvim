@@ -45,6 +45,7 @@ map("n", "<leader>dd", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 map("n", "<leader>dt", ":pu=strftime('%c')<cr>")
 map("n", "<leader>re", function () trailspace.trim() end, { desc = "Remove trailing linespace" })
 map("n", "<leader>rl", function () trailspace.trim() end, { desc = "Remove empty lines with linespace" })
+map("v", "<leader>y", "\"+y")
 
 -- Sets launch perms for file being written to
 map("n", "<leader>se", "<cmd>!chmod +x %<CR>", { silent = true })
