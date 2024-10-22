@@ -3,7 +3,6 @@ local opts = { noremap=true, silent=false }
 
 local builtin = require('telescope.builtin')
 local harpoon = require('harpoon')
-local vling = require('vling')
 local trailspace = require('mini.trailspace')
 
 local functions = require("config.funcs")
@@ -11,9 +10,11 @@ local functions = require("config.funcs")
 vim.g.mapleader      = " "
 vim.g.maplocalleader = ","
 
+-- local vling = require('vling')
+-- map("n", "<leader>td", function () vling.deadkeys.toggle() end, { desc = "Toggle Deadkey Macros" })
+-- map("n", "<leader>ti", function () vling.ipa.toggle() end, { desc = "Toggle IPA Macros" })
+
 -- Toggling things
-map("n", "<leader>td", function () vling.deadkeys.toggle() end, { desc = "Toggle Deadkey Macros" })
-map("n", "<leader>ti", function () vling.ipa.toggle() end, { desc = "Toggle IPA Macros" })
 map("n", "<leader>ts", ":LiveServerToggle<cr>", { desc = "Toggle LiveServer" })
 map("n", "<leader>tw", ":setlocal wrap!<cr>", { desc = "Toggle wordwrapping" })
 map("n", "<leader>tz", ":ZenMode<cr>", { desc = "Toggle ZenMode (Coding)" })

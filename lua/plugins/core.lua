@@ -8,6 +8,13 @@ return {
   {'hrsh7th/cmp-nvim-lsp'},
 
   {'echasnovski/mini.nvim', version = false},
+  {
+    "OXY2DEV/helpview.nvim",
+    lazy = false,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter"
+    }
+  },
 
   {'dgagn/diagflow.nvim'},
   {'nvim-lua/plenary.nvim'},
